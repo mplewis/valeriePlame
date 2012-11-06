@@ -5,7 +5,7 @@ import time
 import pickle
 from loadConfig import loadConfig
 from unixTime import unixTime
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, SoupStrainer
 from umnCourseObj import UmnCourse, UmnSection
 
 # takes in a tag
@@ -13,8 +13,10 @@ from umnCourseObj import UmnCourse, UmnSection
 def cleanTagText(dirtyTag):
 	return string.join(dirtyTag.get_text().strip().split())
 
+only_h3 = SoupStrainer('h3')
+
 def bsParseHtml(rawHtml):
-	oneStop = BeautifulSoup(rawHtml)
+	oneStop = BeautifulSoup(rawHtml, 'lxml', parse_only = only_h3)
 
 	courseDict = {}
 

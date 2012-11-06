@@ -32,3 +32,5 @@ old/*
 static/*
 oneStopData/*
 config.yml
+temp*
+tmp*
