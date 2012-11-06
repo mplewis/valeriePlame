@@ -1,0 +1,1246 @@
+(dp0
+S'PDEN'
+p1
+S'PDEN|Pediatric Dentistry - PDEN'
+p2
+sS'LM'
+p3
+S'LM|Logistics Management - LM'
+p4
+sS'BA'
+p5
+S'BA|Business Administration - BA'
+p6
+sS'MUSA'
+p7
+S'MUSA|Music Applied - MUSA'
+p8
+sS'ECON'
+p9
+S'ECON|Economics - ECON'
+p10
+sS'EE'
+p11
+S'EE|Electrical and Computer Engineering - EE'
+p12
+sS'IBUS'
+p13
+S'IBUS|International Business - IBUS'
+p14
+sS'BLAW'
+p15
+S'BLAW|Business Law - BLAW'
+p16
+sS'MBA'
+p17
+S'MBA|Master of Business Administration - MBA'
+p18
+sS'ARAB'
+p19
+S'ARAB|Arabic - ARAB'
+p20
+sS'SAPH'
+p21
+S'SAPH|Social and Administrative Pharmacy - SAPH'
+p22
+sS'ENTR'
+p23
+S'ENTR|Entrepreneurship - ENTR'
+p24
+sS'NAV'
+p25
+S'NAV|Naval Science - NAV'
+p26
+sS'CPSY'
+p27
+S'CPSY|Child Psychology - CPSY'
+p28
+sS'PBIO'
+p29
+S'PBIO|Plant Biology - PBIO'
+p30
+sS'CHEN'
+p31
+S'CHEN|Chemical Engineering - CHEN'
+p32
+sS'OLPD'
+p33
+S'OLPD|Organizational Leadership, Policy and Development - OLPD'
+p34
+sS'MICE'
+p35
+S'MICE|Microbial Engineering - MICE'
+p36
+sS'CHEM'
+p37
+S'CHEM|Chemistry - CHEM'
+p38
+sS'PDES'
+p39
+S'PDES|Product Design - PDES'
+p40
+sS'MICB'
+p41
+S'MICB|Microbiology - MICB'
+p42
+sS'MICA'
+p43
+S'MICA|Microbiology, Immunology, and Cancer Biology - MICA'
+p44
+sS'ESPM'
+p45
+S'ESPM|Environmental Sciences, Policy, and Management - ESPM'
+p46
+sS'MCOM'
+p47
+S'MCOM|Managerial Communications - MCOM'
+p48
+sS'EMMD'
+p49
+S'EMMD|Emergency Medicine - EMMD'
+p50
+sS'OTHO'
+p51
+S'OTHO|Orthodontics - OTHO'
+p52
+sS'PIL'
+p53
+S'PIL|Program for Individualized Learning - PIL'
+p54
+sS'HSG'
+p55
+S'HSG|Housing Studies - HSG'
+p56
+sS'BTHX'
+p57
+S'BTHX|Bioethics, Center for - BTHX'
+p58
+sS'SMLI'
+p59
+S'SMLI|Somali - SMLI'
+p60
+sS'GWSS'
+p61
+S'GWSS|Gender, Women, and Sexuality Studies - GWSS'
+p62
+sS'GERI'
+p63
+S'GERI|Geriatrics - GERI'
+p64
+sS'INAR'
+p65
+S'INAR|Interdisciplinary Archaeological Studies - INAR'
+p66
+sS'DTCH'
+p67
+S'DTCH|Dutch - DTCH'
+p68
+sS'HSM'
+p69
+S'HSM|Health Systems Management - HSM'
+p70
+sS'PERS'
+p71
+S'PERS|Persian - PERS'
+p72
+sS'CMGT'
+p73
+S'CMGT|Construction Management - CMGT'
+p74
+sS'GCD'
+p75
+S'GCD|Genetics, Cell Biology and Development - GCD'
+p76
+sS'APEC'
+p77
+S'APEC|Applied Economics - APEC'
+p78
+sS'HINF'
+p79
+S'HINF|Health Informatics - HINF'
+p80
+sS'RM'
+p81
+S'RM|Retail Merchandising - RM'
+p82
+sS'AMST'
+p83
+S'AMST|American Studies - AMST'
+p84
+sS'HUMF'
+p85
+S'HUMF|Human Factors - HUMF'
+p86
+sS'LS'
+p87
+S'LS|Liberal Studies - LS'
+p88
+sS'PREV'
+p89
+S'PREV|Preventive Science Minor - PREV'
+p90
+sS'SMGT'
+p91
+S'SMGT|Sport Management - SMGT'
+p92
+sS'RRM'
+p93
+S'RRM|Recreation Resource Management - RRM'
+p94
+sS'GIS'
+p95
+S'GIS|Geographic Information Science - GIS'
+p96
+sS'TRAD'
+p97
+S'TRAD|Therapeutic Radiology - TRAD'
+p98
+sS'JWST'
+p99
+S'JWST|Jewish Studies - JWST'
+p100
+sS'PHCL'
+p101
+S'PHCL|Pharmacology - PHCL'
+p102
+sS'FRIT'
+p103
+S'FRIT|French and Italian - FRIT'
+p104
+sS'CHN'
+p105
+S'CHN|Chinese - CHN'
+p106
+sS'DAKO'
+p107
+S'DAKO|Dakota - DAKO'
+p108
+sS'RAS'
+p109
+S'RAS|Russian Area Studies - RAS'
+p110
+sS'VPM'
+p111
+S'VPM|Veterinary Population Medicine - VPM'
+p112
+sS'HCOL'
+p113
+S'HCOL|Honors Colloquia - HCOL'
+p114
+sS'WRS'
+p115
+S'WRS|Water Resources Science - WRS'
+p116
+sS'CSPH'
+p117
+S'CSPH|Center for Spirituality and Healing - CSPH'
+p118
+sS'MGMT'
+p119
+S'MGMT|Management - MGMT'
+p120
+sS'RSC'
+p121
+S'RSC|Rehabilitation Science - RSC'
+p122
+sS'HRD'
+p123
+S'HRD|Human Resource Development - HRD'
+p124
+sS'GLOS'
+p125
+S'GLOS|Global Studies - GLOS'
+p126
+sS'FIN'
+p127
+S'FIN|Finnish - FIN'
+p128
+sS'ENDO'
+p129
+S'ENDO|Endodontics - ENDO'
+p130
+sS'HMNG'
+p131
+S'HMNG|Hmong - HMNG'
+p132
+sS'ANAT'
+p133
+S'ANAT|Anatomy - ANAT'
+p134
+sS'ADDS'
+p135
+S'ADDS|Addiction Studies - ADDS'
+p136
+sS'PHM'
+p137
+S'PHM|Pharmaceutics - PHM'
+p138
+sS'APS'
+p139
+S'APS|Applied Professional Studies - APS'
+p140
+sS'SENG'
+p141
+S'SENG|Software Engineering - SENG'
+p142
+sS'NSU'
+p143
+S'NSU|Neurosurgery - NSU'
+p144
+sS'AHS'
+p145
+S'AHS|Academic Health Center Shared - AHS'
+p146
+sS'FSOS'
+p147
+S'FSOS|Family Social Science - FSOS'
+p148
+sS'KIN'
+p149
+S'KIN|Kinesiology - KIN'
+p150
+sS'PLPA'
+p151
+S'PLPA|Plant Pathology - PLPA'
+p152
+sS'LAT'
+p153
+S'LAT|Latin - LAT'
+p154
+sS'PHSL'
+p155
+S'PHSL|Physiology - PHSL'
+p156
+sS'LAW'
+p157
+S'LAW|Law School - LAW'
+p158
+sS'SWED'
+p159
+S'SWED|Swedish - SWED'
+p160
+sS'GSD'
+p161
+S'GSD|German,Scandinavian, and Dutch - GSD'
+p162
+sS'SURG'
+p163
+S'SURG|Surgery - SURG'
+p164
+sS'STAT'
+p165
+S'STAT|Statistics - STAT'
+p166
+sS'CSDY'
+p167
+S'CSDY|Control Science and Dynamical Systems - CSDY'
+p168
+sS'TXCL'
+p169
+S'TXCL|Toxicology - TXCL'
+p170
+sS'OBIO'
+p171
+S'OBIO|Oral Biology - OBIO'
+p172
+sS'CSDS'
+p173
+S'CSDS|Comparative Studies in Discourse and Society - CSDS'
+p174
+sS'DES'
+p175
+S'DES|Design - DES'
+p176
+sS'CMB'
+p177
+S'CMB|Comparative and Molecular Biosciences - CMB'
+p178
+sS'CFAN'
+p179
+S'CFAN|College of Food, Agri & Natural Resource Sciences - CFAN'
+p180
+sS'UROL'
+p181
+S'UROL|Urologic Surgery - UROL'
+p182
+sS'LING'
+p183
+S'LING|Linguistics - LING'
+p184
+sS'HRIR'
+p185
+S'HRIR|Human Resources and Industrial Relations - HRIR'
+p186
+sS'CMPE'
+p187
+S'CMPE|Computer Engineering - CMPE'
+p188
+sS'EMS'
+p189
+S'EMS|Early Modern Studies - EMS'
+p190
+sS'REC'
+p191
+S'REC|Recreation, Park, and Leisure Studies - REC'
+p192
+sS'FINA'
+p193
+S'FINA|Finance - FINA'
+p194
+sS'PHYS'
+p195
+S'PHYS|Physics - PHYS'
+p196
+sS'OCS'
+p197
+S'OCS|Off-Campus Study - OCS'
+p198
+sS'AEM'
+p199
+S'AEM|Aerospace Engineering and Mechanics - AEM'
+p200
+sS'GERO'
+p201
+S'GERO|Gerontology - GERO'
+p202
+sS'WHRE'
+p203
+S'WHRE|Work and Human Resource Education - WHRE'
+p204
+sS'AFEE'
+p205
+S'AFEE|Agricultural, Food, and Environmental Education - AFEE'
+p206
+sS'GER'
+p207
+S'GER|German - GER'
+p208
+sS'SCO'
+p209
+S'SCO|Supply Chain and Operations - SCO'
+p210
+sS'SAGR'
+p211
+S'SAGR|Sustainable Agricultural Systems - SAGR'
+p212
+sS'BMEN'
+p213
+S'BMEN|Biomedical Engineering - BMEN'
+p214
+sS'PSY'
+p215
+S'PSY|Psychology - PSY'
+p216
+sS'HSCI'
+p217
+S'HSCI|History of Science and Technology - HSCI'
+p218
+sS'****'
+p219
+S'****|****'
+p220
+sS'DENT'
+p221
+S'DENT|Dentistry - DENT'
+p222
+sS'HIST'
+p223
+S'HIST|History - HIST'
+p224
+sS'CSE'
+p225
+S'CSE|College of Science and Engineering - CSE'
+p226
+sS'PA'
+p227
+S'PA|Public Affairs - PA'
+p228
+sS'SACP'
+p229
+S'SACP|Social, Administrative, and Clinical Pharmacy - SACP'
+p230
+sS'NEUR'
+p231
+S'NEUR|Neurology - NEUR'
+p232
+sS'CLCV'
+p233
+S'CLCV|Classical Civilization - CLCV'
+p234
+sS'PE'
+p235
+S'PE|Physical Education - PE'
+p236
+sS'RUSS'
+p237
+S'RUSS|Russian - RUSS'
+p238
+sS'MT'
+p239
+S'MT|Manufacturing Technology - MT'
+p240
+sS'IDES'
+p241
+S'IDES|Interior Design - IDES'
+p242
+sS'GEO'
+p243
+S'GEO|Geology and Geophysics - GEO'
+p244
+sS'OBST'
+p245
+S'OBST|Obstetrics and Gynecology - OBST'
+p246
+sS'WMBA'
+p247
+S'WMBA|Warsaw Executive MBA - WMBA'
+p248
+sS'CAPY'
+p249
+S'CAPY|Child and Adolescent Psychiatry - CAPY'
+p250
+sS'PBS'
+p251
+S'PBS|Plant Biological Sciences - PBS'
+p252
+sS'RELS'
+p253
+S'RELS|Religious Studies - RELS'
+p254
+sS'DDS'
+p255
+S'DDS|Doctor of Dental Surgery - DDS'
+p256
+sS'SCB'
+p257
+S'SCB|Stem Cell Biology - SCB'
+p258
+sS'RAD'
+p259
+S'RAD|Radiology - RAD'
+p260
+sS'VMED'
+p261
+S'VMED|Veterinary Medicine, Graduate - VMED'
+p262
+sS'ENT'
+p263
+S'ENT|Entomology - ENT'
+p264
+sS'UC'
+p265
+S'UC|University College - UC'
+p266
+sS'EDPA'
+p267
+S'EDPA|Educational Policy and Administration - EDPA'
+p268
+sS'SLS'
+p269
+S'SLS|Second Language Studies - SLS'
+p270
+sS'GRK'
+p271
+S'GRK|Greek - GRK'
+p272
+sS'ME'
+p273
+S'ME|Mechanical Engineering - ME'
+p274
+sS'MTHE'
+p275
+S'MTHE|Mathematics Education - MTHE'
+p276
+sS'AMIN'
+p277
+S'AMIN|American Indian Studies - AMIN'
+p278
+sS'CAHP'
+p279
+S'CAHP|Center for Allied Health Programs - CAHP'
+p280
+sS'MATS'
+p281
+S'MATS|Materials Science - MATS'
+p282
+sS'CDED'
+p283
+S'CDED|Continuing Dental Education - CDED'
+p284
+sS'MM'
+p285
+S'MM|Manufacturing Operations Management - MM'
+p286
+sS'SST'
+p287
+S'SST|Studies of Science and Technology - SST'
+p288
+sS'AST'
+p289
+S'AST|Astronomy - AST'
+p290
+sS'PROS'
+p291
+S'PROS|Prosthodontics - PROS'
+p292
+sS'IDSC'
+p293
+S'IDSC|Information and Decision Sciences - IDSC'
+p294
+sS'HMED'
+p295
+S'HMED|History of Medicine - HMED'
+p296
+sS'ICEL'
+p297
+S'ICEL|Icelandic - ICEL'
+p298
+sS'LASK'
+p299
+S'LASK|Learning and Academic Skills - LASK'
+p300
+sS'CBIO'
+p301
+S'CBIO|Conservation Biology - CBIO'
+p302
+sS'NPSE'
+p303
+S'NPSE|Nanoparticle Science and Engineering - NPSE'
+p304
+sS'LAS'
+p305
+S'LAS|Latin American Studies - LAS'
+p306
+sS'OPH'
+p307
+S'OPH|Ophthalmology - OPH'
+p308
+sS'MATH'
+p309
+S'MATH|Mathematics - MATH'
+p310
+sS'ANTH'
+p311
+S'ANTH|Anthropology - ANTH'
+p312
+sS'FR'
+p313
+S'FR|Forest Resources - FR'
+p314
+sS'ENGL'
+p315
+S'ENGL|English:  Literature - ENGL'
+p316
+sS'MUS'
+p317
+S'MUS|Music - MUS'
+p318
+sS'FW'
+p319
+S'FW|Fisheries and Wildlife - FW'
+p320
+sS'ESCI'
+p321
+S'ESCI|Earth Sciences - ESCI'
+p322
+sS'PERO'
+p323
+S'PERO|Periodontics - PERO'
+p324
+sS'GLBT'
+p325
+S'GLBT|Gay, Lesbian, Bisexual, and Transgender Studies - GLBT'
+p326
+sS'ITAL'
+p327
+S'ITAL|Italian - ITAL'
+p328
+sS'YOST'
+p329
+S'YOST|Youth Development and Research - YOST'
+p330
+sS'ACL'
+p331
+S'ACL|Arts and Cultural Leadership - ACL'
+p332
+sS'PORT'
+p333
+S'PORT|Portuguese - PORT'
+p334
+sS'SPPT'
+p335
+S'SPPT|Spanish and Portuguese - SPPT'
+p336
+sS'SLHS'
+p337
+S'SLHS|Speech-Language-Hearing Sciences - SLHS'
+p338
+sS'VBS'
+p339
+S'VBS|Veterinary & Biomedical Sciences - VBS'
+p340
+sS'HORT'
+p341
+S'HORT|Horticultural Science - HORT'
+p342
+sS'INMD'
+p343
+S'INMD|Interdisciplinary Medicine - INMD'
+p344
+sS'PED'
+p345
+S'PED|Pediatrics - PED'
+p346
+sS'CHIC'
+p347
+S'CHIC|Chicano Studies - CHIC'
+p348
+sS'NURS'
+p349
+S'NURS|Nursing - NURS'
+p350
+sS'EDUC'
+p351
+S'EDUC|Education - EDUC'
+p352
+sS'ISG'
+p353
+S'ISG|Introduced Species and Genotypes - ISG'
+p354
+sS'FM'
+p355
+S'FM|Financial Mathematics - FM'
+p356
+sS'ISE'
+p357
+S'ISE|Infrastructure Systems Engineering - ISE'
+p358
+sS'ENGW'
+p359
+S'ENGW|English: Creative Writing - ENGW'
+p360
+sS'SWAH'
+p361
+S'SWAH|Swahili - SWAH'
+p362
+sS'BIOC'
+p363
+S'BIOC|Biochemistry - BIOC'
+p364
+sS'ARTS'
+p365
+S'ARTS|Art - ARTS'
+p366
+sS'ICP'
+p367
+S'ICP|Inter-College Program - ICP'
+p368
+sS'HSEM'
+p369
+S'HSEM|Honors Seminar - HSEM'
+p370
+sS'OT'
+p371
+S'OT|Occupational Therapy - OT'
+p372
+sS'CNES'
+p373
+S'CNES|Classical and Near Eastern Studies - CNES'
+p374
+sS'PSTL'
+p375
+S'PSTL|Postsecondary Teaching and Learning - PSTL'
+p376
+sS'PHIL'
+p377
+S'PHIL|Philosophy - PHIL'
+p378
+sS'PHAR'
+p379
+S'PHAR|Pharmacy - PHAR'
+p380
+sS'BIOL'
+p381
+S'BIOL|Biology - BIOL'
+p382
+sS'MOT'
+p383
+S'MOT|Management of Technology - MOT'
+p384
+sS'ECP'
+p385
+S'ECP|Experimental and Clinical Pharmacology - ECP'
+p386
+sS'ARTH'
+p387
+S'ARTH|Art History - ARTH'
+p388
+sS'MDP'
+p389
+S'MDP|Master of Development Practice - MDP'
+p390
+sS'TMJP'
+p391
+S'TMJP|TMJ/Craniofacial Pain - TMJP'
+p392
+sS'GRAD'
+p393
+S'GRAD|Graduate School - GRAD'
+p394
+sS'INET'
+p395
+S'INET|Information Networking - INET'
+p396
+sS'ASL'
+p397
+S'ASL|American Sign Language - ASL'
+p398
+sS'CLSP'
+p399
+S'CLSP|Clinical Laboratory Sciences Program - CLSP'
+p400
+sS'CI'
+p401
+S'CI|Curriculum and Instruction - CI'
+p402
+sS'BPHY'
+p403
+S'BPHY|Biophysical Sciences - BPHY'
+p404
+sS'FREN'
+p405
+S'FREN|French - FREN'
+p406
+sS'CL'
+p407
+S'CL|Comparative Literature - CL'
+p408
+sS'URBS'
+p409
+S'URBS|Urban Studies - URBS'
+p410
+sS'MIL'
+p411
+S'MIL|Military Science - MIL'
+p412
+sS'BBE'
+p413
+S'BBE|Bioproducts and Biosystems Engineering - BBE'
+p414
+sS'CLA'
+p415
+S'CLA|College of Liberal Arts - CLA'
+p416
+sS'DNCE'
+p417
+S'DNCE|Dance - DNCE'
+p418
+sS'INS'
+p419
+S'INS|Insurance and Risk Management - INS'
+p420
+sS'NSCI'
+p421
+S'NSCI|Neuroscience Department - NSCI'
+p422
+sS'ADPY'
+p423
+S'ADPY|Adult Psychiatry - ADPY'
+p424
+sS'HNUR'
+p425
+S'HNUR|Hindi and Urdu - HNUR'
+p426
+sS'COMM'
+p427
+S'COMM|Communication Studies - COMM'
+p428
+sS'ABUS'
+p429
+S'ABUS|Applied Business - ABUS'
+p430
+sS'PLSH'
+p431
+S'PLSH|Polish - PLSH'
+p432
+sS'BSE'
+p433
+S'BSE|Biology, Society, and Environment - BSE'
+p434
+sS'OTOL'
+p435
+S'OTOL|Otolaryngology - OTOL'
+p436
+sS'OSUR'
+p437
+S'OSUR|Oral and Maxillofacial Surgery - OSUR'
+p438
+sS'NR'
+p439
+S'NR|Natural Resources Science and Management - NR'
+p440
+sS'CLS'
+p441
+S'CLS|Clinical Laboratory Science - CLS'
+p442
+sS'MED'
+p443
+S'MED|Medicine - MED'
+p444
+sS'ALL'
+p445
+S'ALL|Asian Languages and Literatures - ALL'
+p446
+sS'EDHD'
+p447
+S'EDHD|Education and Human Development - EDHD'
+p448
+sS'SPAN'
+p449
+S'SPAN|Spanish - SPAN'
+p450
+sS'LGTT'
+p451
+S'LGTT|Language, Teaching, and Technology - LGTT'
+p452
+sS'HEBR'
+p453
+S'HEBR|Hebrew - HEBR'
+p454
+sS'SW'
+p455
+S'SW|Social Work - SW'
+p456
+sS'MORT'
+p457
+S'MORT|Mortuary Science - MORT'
+p458
+sS'ST'
+p459
+S'ST|Security Technologies - ST'
+p460
+sS'OMS'
+p461
+S'OMS|Operations and Management Sciences - OMS'
+p462
+sS'ANES'
+p463
+S'ANES|Anesthesiology - ANES'
+p464
+sS'OJIB'
+p465
+S'OJIB|Ojibwe - OJIB'
+p466
+sS'CVM'
+p467
+S'CVM|Veterinary Medicine - CVM'
+p468
+sS'MEDC'
+p469
+S'MEDC|Medicinal Chemistry - MEDC'
+p470
+sS'MDS'
+p471
+S'MDS|Multidisciplinary Studies - MDS'
+p472
+sS'ORSU'
+p473
+S'ORSU|Orthopaedic Surgery - ORSU'
+p474
+sS'IBH'
+p475
+S'IBH|Integrated Behavioral Health - IBH'
+p476
+sS'MIMS'
+p477
+S'MIMS|Moving Image Studies - MIMS'
+p478
+sS'DH'
+p479
+S'DH|Dental Hygiene - DH'
+p480
+sS'SCAN'
+p481
+S'SCAN|Scandinavian - SCAN'
+p482
+sS'NSC'
+p483
+S'NSC|Neuroscience - NSC'
+p484
+sS'SOIL'
+p485
+S'SOIL|Soil, Water, and Climate - SOIL'
+p486
+sS'MST'
+p487
+S'MST|Museum Studies - MST'
+p488
+sS'PMED'
+p489
+S'PMED|Physical Medicine and Rehabilitation - PMED'
+p490
+sS'AIR'
+p491
+S'AIR|Aerospace Studies - AIR'
+p492
+sS'AIM'
+p493
+S'AIM|Agricultural Industries and Marketing - AIM'
+p494
+sS'AGRO'
+p495
+S'AGRO|Agronomy and Plant Genetics - AGRO'
+p496
+sS'DERM'
+p497
+S'DERM|Dermatology - DERM'
+p498
+sS'TRIN'
+p499
+S'TRIN|Translation and Interpreting - TRIN'
+p500
+sS'SCMC'
+p501
+S'SCMC|Studies in Cinema and Media Culture - SCMC'
+p502
+sS'AAS'
+p503
+S'AAS|Asian American Studies - AAS'
+p504
+sS'PATH'
+p505
+S'PATH|Pathology - PATH'
+p506
+sS'ACCT'
+p507
+S'ACCT|Accounting - ACCT'
+p508
+sS'DT'
+p509
+S'DT|Dental Therapy - DT'
+p510
+sS'ANSC'
+p511
+S'ANSC|Animal Science - ANSC'
+p512
+sS'AFRO'
+p513
+S'AFRO|African American and African Studies - AFRO'
+p514
+sS'MDGK'
+p515
+S'MDGK|Modern Greek - MDGK'
+p516
+sS'SOC'
+p517
+S'SOC|Sociology - SOC'
+p518
+sS'KOR'
+p519
+S'KOR|Korean - KOR'
+p520
+sS'JOUR'
+p521
+S'JOUR|Journalism and Mass Communication - JOUR'
+p522
+sS'LA'
+p523
+S'LA|Landscape Architecture - LA'
+p524
+sS'ADES'
+p525
+S'ADES|Apparel Design - ADES'
+p526
+sS'ARCH'
+p527
+S'ARCH|Architecture - ARCH'
+p528
+sS'BIE'
+p529
+S'BIE|Business and Industry Education - BIE'
+p530
+sS'CGSC'
+p531
+S'CGSC|Cognitive Science - CGSC'
+p532
+sS'DSSC'
+p533
+S'DSSC|Development Studies and Social Change - DSSC'
+p534
+sS'LAAS'
+p535
+S'LAAS|Land and Atmospheric Science - LAAS'
+p536
+sS'ADED'
+p537
+S'ADED|Adult Education - ADED'
+p538
+sS'POL'
+p539
+S'POL|Political Science - POL'
+p540
+sS'MKTG'
+p541
+S'MKTG|Marketing - MKTG'
+p542
+sS'WRIT'
+p543
+S'WRIT|Writing Studies - WRIT'
+p544
+sS'GDES'
+p545
+S'GDES|Graphic Design - GDES'
+p546
+sS'TH'
+p547
+S'TH|Theatre Arts - TH'
+p548
+sS'MBT'
+p549
+S'MBT|Master of Business Taxation - MBT'
+p550
+sS'MUED'
+p551
+S'MUED|Music Education - MUED'
+p552
+sS'EAS'
+p553
+S'EAS|East Asian Studies - EAS'
+p554
+sS'EEB'
+p555
+S'EEB|Ecology, Evolution, and Behavior - EEB'
+p556
+sS'GEOE'
+p557
+S'GEOE|Geological Engineering - GEOE'
+p558
+sS'FSCN'
+p559
+S'FSCN|Food Science and Nutrition - FSCN'
+p560
+sS'GEOG'
+p561
+S'GEOG|Geography - GEOG'
+p562
+sS'SCIC'
+p563
+S'SCIC|Scientific Computation - SCIC'
+p564
+sS'NUTR'
+p565
+S'NUTR|Nutrition - NUTR'
+p566
+sS'CPMS'
+p567
+S'CPMS|Clinical Physiology and Movement Science - CPMS'
+p568
+sS'IS'
+p569
+S'IS|Innovation Studies - IS'
+p570
+sS'PUBH'
+p571
+S'PUBH|Public Health - PUBH'
+p572
+sS'MEST'
+p573
+S'MEST|Medieval Studies - MEST'
+p574
+sS'NOR'
+p575
+S'NOR|Norwegian - NOR'
+p576
+sS'VCS'
+p577
+S'VCS|Veterinary Clinical Sciences - VCS'
+p578
+sS'CE'
+p579
+S'CE|Civil Engineering - CE'
+p580
+sS'FMCH'
+p581
+S'FMCH|Family Medicine and Community Health - FMCH'
+p582
+sS'URDU'
+p583
+S'URDU|Urdu - URDU'
+p584
+sS'ESL'
+p585
+S'ESL|English as a Second Language - ESL'
+p586
+sS'IE'
+p587
+S'IE|Industrial Engineering - IE'
+p588
+sS'ID'
+p589
+S'ID|Interdepartmental Study - ID'
+p590
+sS'MILI'
+p591
+S'MILI|Medical Industry Leadership Institute - MILI'
+p592
+sS'PT'
+p593
+S'PT|Physical Therapy - PT'
+p594
+sS'JPN'
+p595
+S'JPN|Japanese - JPN'
+p596
+sS'CSCI'
+p597
+S'CSCI|Computer Science - CSCI'
+p598
+sS'BINF'
+p599
+S'BINF|Bioinformatics - BINF'
+p600
+sS'IREL'
+p601
+S'IREL|Interpersonal Relationships Research - IREL'
+p602
+sS'APST'
+p603
+S'APST|Apparel Studies - APST'
+p604
+sS'CSCL'
+p605
+S'CSCL|Cultural Studies and Comparative Literature - CSCL'
+p606
+sS'LAMP'
+p607
+S'LAMP|Laboratory Medicine and Pathology - LAMP'
+p608
+sS'OUE'
+p609
+S'OUE|Office of Undergraduate Education - OUE'
+p610
+sS'CHPH'
+p611
+S'CHPH|Chemical Physics - CHPH'
+p612
+sS'EPSY'
+p613
+S'EPSY|Educational Psychology - EPSY'
+p614
+sS'APSC'
+p615
+S'APSC|Applied Plant Sciences - APSC'
+p616
+sS'GEND'
+p617
+S'GEND|General Dentistry - GEND'
+p618
+sS'MCDG'
+p619
+S'MCDG|Molecular Cellular Developmental Biol and Genetics - MCDG'
+p620
+sS'SUST'
+p621
+S'SUST|Sustainability Studies - SUST'
+p622
+s.

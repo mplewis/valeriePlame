@@ -25,3 +25,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+test*.py
+old/*
+*.sublime-*
+static/*
+oneStopData/*
+config.yml
