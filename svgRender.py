@@ -74,9 +74,16 @@ def renderAllSvgFromMostRecentData():
 		opacity = '.4',
 		opacity_hover = '.75',
 		transition = '.25s ease-out',
+		background = '#7c111a',
+		plot_background = 'transparent',
+		foreground = '#dcc', # legend text
+		foreground_light = '#fff', # title text
+		# unused: foreground_dark = '#00f',
 		# red, yellow, green
 		colors = ('#e95355', '#feed6c', '#b6e354')
 	)
+
+	#customChartStyle = pygal.style.DarkSolarizedStyle
 
 	oneStopHomeUrl = 'http://onestop2.umn.edu/courseinfo/searchcriteria.jsp?institution=UMNTC'
 	chart = pygal.Pie(
@@ -114,7 +121,9 @@ def renderAllSvgFromMostRecentData():
 		chart = pygal.Pie(
 			style = customChartStyle,
 			width = 300,
-			height = 225
+			height = 225,
+			tooltip_font_size = 11,
+			legend_font_size = 11,
 		)
 
 		searchUrl = oneStopUtils.getOneStopSearchUrl(season, year, subj)
@@ -124,21 +133,30 @@ def renderAllSvgFromMostRecentData():
 		chart.add('All closed', [{
 			'value': numAllClosed,
 			'label': str(numAllClosed) + textAllClosed,
-			'xlink': searchUrl
+			'xlink': {
+				'href': searchUrl,
+				'show': 'new'
+			}
 		}])
 		numSomeOpen = ugCourseSubjSomeOpenCount[subj]
 		textSomeOpen = getPluralStr(numSomeOpen, ' course')
 		chart.add('Some open', [{
 			'value': numSomeOpen,
 			'label': str(numSomeOpen) + textSomeOpen,
-			'xlink': searchUrl
+			'xlink': {
+				'href': searchUrl,
+				'show': 'new'
+			}
 		}])
 		numAllOpen = ugCourseSubjAllOpenCount[subj]
 		textAllOpen = getPluralStr(numAllOpen, ' course')
 		chart.add('All open', [{
 			'value': numAllOpen,
 			'label': str(numAllOpen) + textAllOpen,
-			'xlink': searchUrl
+			'xlink': {
+				'href': searchUrl,
+				'show': 'new'
+			}
 		}])
 		chart.render_to_file(svgDir + '/' + subj + '.svg')
 
