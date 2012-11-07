@@ -32,7 +32,6 @@ def index():
 def multipleSubjPage(pageNum):
 	numPages = int(math.ceil(len(subjTriples) / 8) + 1)
 	listOfThings = range(0, numPages)
-	print listOfThings
 	if pageNum > numPages or pageNum < 1:
 		flask.abort(404)
 	return flask.render_template('multipleSubjects.html', pageNum = pageNum, subjTriples = subjTriples[pageNum*8-8:pageNum*8-1])

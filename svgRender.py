@@ -79,7 +79,11 @@ def renderAllSvgFromMostRecentData():
 	)
 
 	oneStopHomeUrl = 'http://onestop2.umn.edu/courseinfo/searchcriteria.jsp?institution=UMNTC'
-	chart = pygal.Pie(style = customChartStyle)
+	chart = pygal.Pie(
+		style = customChartStyle,
+		width = 780,
+		height = 585
+	)
 	chart.title = 'Undergrad course availability (' + season + ' ' + year + ')'
 	textUgAllClosed = getPluralStr(ugAllSectionsClosed, ' course')
 	chart.add('All closed', [{
@@ -107,10 +111,14 @@ def renderAllSvgFromMostRecentData():
 		initDictKey(ugCourseSubjSomeOpenCount, subj)
 		
 		# style is neon, slightly modified, with different colors
-		chart = pygal.Pie(style = customChartStyle)
+		chart = pygal.Pie(
+			style = customChartStyle,
+			width = 300,
+			height = 225
+		)
 
 		searchUrl = oneStopUtils.getOneStopSearchUrl(season, year, subj)
-		chart.title = subj + ' course availability (' + season + ' ' + year + ')'
+		chart.title = subj + ' (' + season + ' ' + year + ')'
 		numAllClosed = ugCourseSubjAllClosedCount[subj]
 		textAllClosed = getPluralStr(numAllClosed, ' course')
 		chart.add('All closed', [{

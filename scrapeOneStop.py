@@ -13,10 +13,22 @@ from umnCourseObj import UmnCourse, UmnSection
 def cleanTagText(dirtyTag):
 	return string.join(dirtyTag.get_text().strip().split())
 
-only_h3 = SoupStrainer('h3')
+def oneStopStrainer(tagName, tagAttrs):
+	if tagName == 'div' and 'class' in tagAttrs:
+		if tagAttrs['class'] == 'whiteCourseBlock' or tagAttrs['class'] == 'colorCourseBlock':
+			return True
+		else:
+			return False
+	else:
+		return False
+
+oneStopRelevant = SoupStrainer(oneStopStrainer)
 
 def bsParseHtml(rawHtml):
-	oneStop = BeautifulSoup(rawHtml, 'lxml', parse_only = only_h3)
+	oneStop = BeautifulSoup(rawHtml, 'lxml', parse_only = oneStopRelevant)
+
+	#with open('pretty.html', 'w') as prettyOut:
+	#	prettyOut.write(oneStop.prettify().encode('utf-8'))
 
 	courseDict = {}
 
