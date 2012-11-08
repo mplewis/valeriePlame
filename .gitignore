@@ -29,7 +29,7 @@ pip-log.txt
 test*.py
 old/*
 *.sublime-*
-static/*
+static/svg
 oneStopData/*
 config.yml
 temp*
