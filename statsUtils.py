@@ -47,9 +47,6 @@ def getUndergradStats(courseDict):
 			sectionDict = course.getAllSections()
 			for sectionKey in sectionDict:
 				section = sectionDict[sectionKey]
-				print repr(section.getSeatsTotal())
-				print repr(section.getSeatsOpen())
-				print repr(section.getSeatsFilled())
 				stats['numSeatsTotal'] += section.getSeatsTotal()
 				stats['numSeatsFilled'] += section.getSeatsFilled()
 				stats['numSeatsOpen'] += section.getSeatsOpen()
