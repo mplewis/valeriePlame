@@ -1,0 +1,26 @@
+# Rename me to config.yml or the server will not run!
+# Flask server settings
+server:
+    # if develMode = True, Flask web server will serve to localhost only
+    # for security purposes; set develMode to False to serve publicly
+    develMode: True
+    port: 8080
+# OneStop scraping settings
+oneStop:
+    # season and year of data to grab
+    season: Spring
+    year: 2013
+# location of data files
+dataLoc:
+    # file that holds pickled subject dict
+    subjList: subjList.pickled
+    # directory in which to store processed course dicts
+    # dicts are named after the unix time they were scraped
+    courseDataDir: oneStopData
+    # extension to use when storing course data files
+    # example: courseDataExt = dat --> 1352129875.dat
+    courseDataExt: dat
+    # directory to store output SVG files
+    svgDir: static/svg
+    # directory in which statistical analyses will be stored
+    statsDir: statsData
