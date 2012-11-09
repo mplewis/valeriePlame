@@ -79,12 +79,12 @@ class UmnSection:
 	def waitlistClosed(self):
 		return self.waitlist == 'Closed'
 	def setSeatsOpen(self, num):
-		self.seatsOpen = num
+		self.seatsOpen = int(num)
 	def setSeatsTotal(self, num):
-		self.seatsTotal = num
+		self.seatsTotal = int(num)
 	def getSeatsOpen(self):
-		return self.seatsOpen
+		return int(self.seatsOpen)
 	def getSeatsTotal(self):
-		return self.seatsTotal
+		return int(self.seatsTotal)
 	def getSeatsFilled(self):
-		return self.seatsTotal - self.seatsOpen
+		return int(self.seatsTotal) - int(self.seatsOpen)

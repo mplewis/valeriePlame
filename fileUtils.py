@@ -1,4 +1,5 @@
 import glob
+import pickle
 from loadConfig import loadConfig
 
 cfg = loadConfig()
@@ -13,5 +14,24 @@ def getAllFiles(dataDir = defaultDataDir, dataExt = defaultDataExt, latestFirst 
 	files.sort(reverse = latestFirst)
 	return files
 
+def getFileNameAndExtFromPath(filePath):
+	split = filePath.split('/')
+	fileName = split[len(split) - 1]
+	fileNameSplit = fileName.split('.')
+	return fileNameSplit
+
+def getFileNameFromPath(filePath):
+	return getFileNameAndExtFromPath(filePath)[0]
+
+def getFileExtFromPath(filePath):
+	return getFileNameAndExtFromPath(filePath)[1]
+
+def unpickle(fileLoc):
+	with open(fileLoc, 'r') as dataFile:
+		return pickle.load(dataFile)
+
 if __name__ == '__main__':
-	print 'Most recent datafile:', getMostRecentFile()
+	mostRecentDataFile = getMostRecentFile()
+	print 'Most recent datafile:', mostRecentDataFile
+	print 'Name:', getFileNameFromPath(mostRecentDataFile)
+	print 'Extension:', getFileExtFromPath(mostRecentDataFile)

@@ -68,8 +68,8 @@ def bsParseHtml(rawHtml):
 												seatsTextSplit = seatsText.split()
 												seatsOpen = seatsTextSplit[0]
 												seatsTotal = seatsTextSplit[2]
-												section.setSeatsOpen(seatsOpen)
-												section.setSeatsTotal(seatsTotal)
+												section.setSeatsOpen(int(seatsOpen))
+												section.setSeatsTotal(int(seatsTotal))
 											# waitlist unavailable text
 											elif seatsText == 'Waitlist becomes available when class fills.':
 												section.setWaitlistNotYetOpen()
