@@ -34,3 +34,5 @@ oneStopData/*
 config.yml
 temp*
 tmp*
+
+statsData/*
