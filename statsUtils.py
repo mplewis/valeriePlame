@@ -1,6 +1,7 @@
 import yaml
 import fileUtils
 import pickle
+from dynPrint import dynPrint
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
 
@@ -9,15 +10,29 @@ courseDataDir = cfg['dataLoc']['courseDataDir']
 courseDataExt = cfg['dataLoc']['courseDataExt']
 statsOutputDir = cfg['dataLoc']['statsDir']
 
+openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
+openClosedFileLoc = statsOutputDir + '/' + openClosedFileName
+
+cfgMaxCourseLevel = cfg['oneStop']['maxUndergradLevel']
+
 class DataAnalyzer:
-	def __init__(self, dataFileList):
-		self.fileList = dataFileList
-	def undergradStatsPrintTest(self):
-		for dataFileLoc in self.fileList:
-			courses = fileUtils.unpickle(dataFileLoc)
-			stats = getUndergradStats(courses)
-			fileTime = fileUtils.getFileNameFromPath(dataFileLoc)
-			print fileTime, stats
+	def __init__(self, dataFileLoc):
+		self.file = dataFileLoc
+		self.dataRead = False
+		self.data = None
+	def refresh(self):
+		courses = fileUtils.unpickle(self.file)
+		self.data = getUndergradStats(courses)
+		self.dataRead = True
+	def getData(self):
+		if not self.dataRead:
+			self.refresh()
+		return self.data
+	def __repr__(self):
+		if not self.dataRead:
+			self.refresh()
+		fileTime = fileUtils.getFileNameFromPath(self.file)
+		return "Data from " + str(fileTime) + ': ' + str(self.data)
 
 def getUndergradStats(courseDict):
 	stats = {}
@@ -33,7 +48,7 @@ def getUndergradStats(courseDict):
 	stats['numSeatsOpen'] = 0
 	for courseKey in courseDict:
 		course = courseDict[courseKey]
-		if course.getCourseLevel() <= 4:
+		if course.getCourseLevel() <= cfgMaxCourseLevel:
 			stats['numSectionsTotal'] += course.getNumSections()
 			stats['numSectionsClosed'] += course.getNumSectionsClosed()
 			stats['numSectionsOpen'] += course.getNumSectionsOpen()
@@ -54,8 +69,26 @@ def getUndergradStats(courseDict):
 
 if __name__ == '__main__':
 	filesToAnalyze = fileUtils.getAllFiles(dataDir = courseDataDir, dataExt = courseDataExt, latestFirst = False)
-	print 'Datafiles to analyze (oldest first):'
-	for filePath in filesToAnalyze:
-		print '\t' + filePath
-	stats = DataAnalyzer(filesToAnalyze)
-	stats.undergradStatsPrintTest()
+	try:
+		with open(openClosedFileLoc, 'r') as existingDataFile:
+			existingData = pickle.load(existingDataFile)
+			fileNamesToAnalyze = [fileUtils.getFileNameFromPath(fileName) for fileName in filesToAnalyze]
+			fileNamesToAnalyze = list(set(fileNamesToAnalyze).difference(set(existingData)))
+			filesToAnalyze = [courseDataDir + '/' + fileName + '.' + courseDataExt for fileName in fileNamesToAnalyze]
+			allData = existingData
+	except IOError:
+		allData = {}
+	numFilesProcessed = 0
+	numFilesTotal = len(filesToAnalyze)
+	print numFilesTotal, 'datafiles to analyze.'
+	for fileToAnalyze in filesToAnalyze:
+		numFilesProcessed += 1
+		fileTime = fileUtils.getFileNameFromPath(fileToAnalyze)
+		print 'Datafile', numFilesProcessed, 'of', numFilesTotal, '(' + fileTime + ')'
+		dRead = DataAnalyzer(fileToAnalyze)
+		dRead.refresh()
+		allData[fileTime] = dRead.getData()
+		#print dRead
+	with open(openClosedFileLoc, 'w') as dataOut:
+		pickle.dump(allData, dataOut)
+	print 'Done. Data stored to ' + openClosedFileLoc + '.'
