@@ -83,13 +83,14 @@ if __name__ == '__main__':
 	numFilesProcessed = 0
 	numFilesTotal = len(filesToAnalyze)
 	print numFilesTotal, 'datafiles to analyze.'
-	for fileToAnalyze in filesToAnalyze:
-		numFilesProcessed += 1
-		fileTime = fileUtils.getFileNameFromPath(fileToAnalyze)
-		dynPrint('Datafile ' + str(numFilesProcessed) + ' of ' + str(numFilesTotal) + ' (' + str(fileTime) + ')')
-		dRead = DataAnalyzer(fileToAnalyze)
-		dRead.refresh()
-		allData[fileTime] = dRead.getData()
-	with open(openClosedFileLoc, 'w') as dataOut:
-		pickle.dump(allData, dataOut)
-	print '\nDone. Data stored to ' + openClosedFileLoc + '.'
+	if numFilesTotal > 0:
+		for fileToAnalyze in filesToAnalyze:
+			numFilesProcessed += 1
+			fileTime = fileUtils.getFileNameFromPath(fileToAnalyze)
+			dynPrint('Datafile ' + str(numFilesProcessed) + ' of ' + str(numFilesTotal) + ' (' + str(fileTime) + ')')
+			dRead = DataAnalyzer(fileToAnalyze)
+			dRead.refresh()
+			allData[fileTime] = dRead.getData()
+		with open(openClosedFileLoc, 'w') as dataOut:
+			pickle.dump(allData, dataOut)
+		print '\nDone. Data stored to ' + openClosedFileLoc + '.'
