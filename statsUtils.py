@@ -3,9 +3,11 @@
 import yaml
 import fileUtils
 import pickle
-from dynPrint import dynPrint
+import time
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
+from consoleSize import consoleSize
+from dynPrint import dynPrint
 
 cfg = loadConfig()
 courseDataDir = cfg['dataLoc']['courseDataDir']
@@ -70,6 +72,13 @@ def getUndergradStats(courseDict):
 	return stats
 
 if __name__ == '__main__':
+	def statusOut():
+		out = str(pctComplete) + '% complete: ' + \
+			'File ' + str(numFilesProcessed + 1) + '/' + str(numFilesTotal) + \
+			' (' + fileTime + '.' + courseDataExt + ')' + \
+			alignRightSpacer + \
+			eta
+		return out
 	filesToAnalyze = fileUtils.getAllFiles(dataDir = courseDataDir, dataExt = courseDataExt, latestFirst = False)
 	try:
 		with open(openClosedFileLoc, 'r') as existingDataFile:
@@ -82,15 +91,34 @@ if __name__ == '__main__':
 		allData = {}
 	numFilesProcessed = 0
 	numFilesTotal = len(filesToAnalyze)
-	print numFilesTotal, 'datafiles to analyze.'
+	print 'Analyzing datafiles:', numFilesTotal, 'files to analyze.'
 	if numFilesTotal > 0:
+		startTime = time.clock()
+		alignRightSpacer = ''
 		for fileToAnalyze in filesToAnalyze:
-			numFilesProcessed += 1
 			fileTime = fileUtils.getFileNameFromPath(fileToAnalyze)
-			dynPrint('Datafile ' + str(numFilesProcessed) + ' of ' + str(numFilesTotal) + ' (' + str(fileTime) + ')')
+			timePassed = time.clock() - startTime
+			numfilesLeft = numFilesTotal - numFilesProcessed
+			pctComplete = numFilesProcessed * 100 / numFilesTotal
+			if numFilesProcessed == 0:
+				eta = ''
+			else:
+				etaTime = (timePassed / numFilesProcessed) * numfilesLeft
+				etaTimePretty = time.strftime('%H:%M:%S', time.gmtime(etaTime))
+				eta = ' (ETA: ' + etaTimePretty + ')'
+			consoleWidth = int(consoleSize()[0])
+			while len(statusOut()) != consoleWidth:
+				if len(statusOut()) < consoleWidth:
+					alignRightSpacer += ' '
+				else:
+					if len(alignRightSpacer) == 0:
+						break
+					alignRightSpacer = alignRightSpacer[:-1]
+			dynPrint(statusOut())
 			dRead = DataAnalyzer(fileToAnalyze)
 			dRead.refresh()
 			allData[fileTime] = dRead.getData()
+			numFilesProcessed += 1
 		with open(openClosedFileLoc, 'w') as dataOut:
 			pickle.dump(allData, dataOut)
 		print '\nDone. Data stored to ' + openClosedFileLoc + '.'
