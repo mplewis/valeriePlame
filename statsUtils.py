@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import yaml
 import fileUtils
 import pickle
@@ -84,11 +86,10 @@ if __name__ == '__main__':
 	for fileToAnalyze in filesToAnalyze:
 		numFilesProcessed += 1
 		fileTime = fileUtils.getFileNameFromPath(fileToAnalyze)
-		print 'Datafile', numFilesProcessed, 'of', numFilesTotal, '(' + fileTime + ')'
+		dynPrint('Datafile ' + str(numFilesProcessed) + ' of ' + str(numFilesTotal) + ' (' + str(fileTime) + ')')
 		dRead = DataAnalyzer(fileToAnalyze)
 		dRead.refresh()
 		allData[fileTime] = dRead.getData()
-		#print dRead
 	with open(openClosedFileLoc, 'w') as dataOut:
 		pickle.dump(allData, dataOut)
-	print 'Done. Data stored to ' + openClosedFileLoc + '.'
+	print '\nDone. Data stored to ' + openClosedFileLoc + '.'

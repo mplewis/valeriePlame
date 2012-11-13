@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 class UmnCourse:
 	def __init__(self, subj, num, desc):
 		self.sectionDict = {}

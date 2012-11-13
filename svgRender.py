@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import pygal
 import pickle
 import oneStopUtils

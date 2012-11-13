@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import glob
 import pickle
 from loadConfig import loadConfig
