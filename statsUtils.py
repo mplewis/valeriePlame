@@ -121,4 +121,4 @@ if __name__ == '__main__':
 			numFilesProcessed += 1
 		with open(openClosedFileLoc, 'w') as dataOut:
 			pickle.dump(allData, dataOut)
-		print '\nDone. Data stored to ' + openClosedFileLoc + '.'
+		dynPrint('Done. Data stored to ' + openClosedFileLoc + '.\n')
