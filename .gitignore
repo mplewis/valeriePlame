@@ -26,12 +26,14 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-test*.py
+
 old/*
 *.sublime-*
 static/svg
 oneStopData/*
 config.yml
+
+test*
 temp*
 tmp*
 
