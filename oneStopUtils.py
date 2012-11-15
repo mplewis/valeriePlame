@@ -39,9 +39,11 @@ def getOneStopSearchUrl(season, year, subjAbbr):
 	url = 'http://onestop2.umn.edu/courseinfo/viewSearchResults.do?campus=UMNTC&swapNow=N&searchTerm=UMNTC%2C' + magicNum + '%2C' + seasonClean + '%2C' + yearClean + '&searchSubjects=' + subjNameFull + '&searchCatalogNumber=&searchClassroom=true&searchOpenSections=false&searchLowerStartTime=00%3A00%2C12%3A00&searchUpperEndTime=23%3A59%2C11%3A59&searchMon=true&searchTue=true&searchWed=true&searchThu=true&searchFri=true&searchSat=true&searchSun=true&searchLowerLevelLimit=0%2C0xxx&searchUpperLevelLimit=9999%2C9xxx&searchLowerCreditLimit=0&searchUpperCreditLimit=9999&searchInstructorName=&searchCourseTitle=&searchSessionCodes=ALL%2CALL&searchLocations=TCEASTBANK%2CEast+Bank&searchLocations=TCWESTBANK%2CWest+Bank&searchLocations=STPAUL%2CSt.+Paul&campus=UMNTC&search=Search'
 	return url
 
+# test cases; show that getting a full subject from an abbreviation works and
+#     that getting a search url from a subject works too
 if __name__ == '__main__':
 	print getFullSubjFromAbbr('csci')
 	print getFullSubjFromAbbr('Math')
 	print getFullSubjFromAbbr('ARTS')
-	print getOneStopSearchUrl('Fall', '2012', 'CSCI')
-	print getOneStopSearchUrl('Summer', '2013', 'arts')
+	print getOneStopSearchUrl('Fall', '2012', 'Ee')
+	print getOneStopSearchUrl('Summer', '2013', '****')
