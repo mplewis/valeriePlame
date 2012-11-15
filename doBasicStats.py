@@ -53,7 +53,7 @@ def getUndergradStats(courseDict):
 	stats['numSeatsOpen'] = 0
 	for courseKey in courseDict:
 		course = courseDict[courseKey]
-		if course.getCourseLevel() <= cfgMaxCourseLevel:
+		if undergradCoursesOnly and course.getCourseLevel() <= maxCourseLevel:
 			stats['numSectionsTotal'] += course.getNumSections()
 			stats['numSectionsClosed'] += course.getNumSectionsClosed()
 			stats['numSectionsOpen'] += course.getNumSectionsOpen()
