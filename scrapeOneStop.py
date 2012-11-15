@@ -114,6 +114,6 @@ def saveCourseDict():
 	return totalTime
 
 if __name__ == '__main__':
-	print 'Scraping OneStop...'
+	print 'Scraping OneStop... This may take a while.'
 	timeTaken = saveCourseDict()
 	print 'Done in', timeTaken, 'seconds.'
