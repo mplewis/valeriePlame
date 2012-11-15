@@ -1,4 +1,4 @@
-# Rename me to config.yml or the server will not run!
+# DON'T FORGET TO COPY ME TO CONFIG.YML OR NOTHING WORKS! Thanks :)
 # Flask server settings
 server:
     # if develMode = True, Flask web server will serve to localhost only
@@ -10,6 +10,19 @@ oneStop:
     # season and year of data to grab
     season: Spring
     year: 2013
+    # if true, only processes courses with a maximum course level of maxUndergradLevel
+    undergradCoursesOnly: True
+    # courses at or above this level will be called undergraduate courses
+    #     example: maxUndergradLevel: 5 --> 5000 and below classes will be undergrad
+    maxUndergradLevel: 5
+# options for processing data and runnig statistics on said data
+stats:
+    # sanityCheck column/percent are used to discard outliers in data
+    # the median of a column is taken, then data is compared to that median
+    # if a row has greater than +/- sanityCheckPercent difference from the median,
+    #     the row is dropped
+    sanityCheckColumn: numSectionsTotal
+    sanityCheckPercent: 5
 # location of data files
 dataLoc:
     # file that holds pickled subject dict
@@ -24,3 +37,13 @@ dataLoc:
     svgDir: static/svg
     # directory in which statistical analyses will be stored
     statsDir: statsData
+    # how to name statistics files (found in statsData)
+    statsFiles:
+        # statsDir = statsData, statsExt = dat, openClosedData/raw = openClosedRaw -->
+        #     class open-closed raw data stored in "statsData/openClosedRaw.dat"
+        statsExt: dat
+        openClosedData:
+            raw: openClosedRaw
+            processed: openClosedProc
+    # where to store generated csv files
+    csvOut: testData
