@@ -14,10 +14,11 @@ courseDataDir = cfg['dataLoc']['courseDataDir']
 courseDataExt = cfg['dataLoc']['courseDataExt']
 statsOutputDir = cfg['dataLoc']['statsDir']
 
-openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
+openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
 openClosedFileLoc = statsOutputDir + '/' + openClosedFileName
 
-cfgMaxCourseLevel = cfg['oneStop']['maxUndergradLevel']
+undergradCoursesOnly = cfg['oneStop']['undergradCoursesOnly']
+maxCourseLevel = cfg['oneStop']['maxUndergradLevel']
 
 class DataAnalyzer:
 	def __init__(self, dataFileLoc):
