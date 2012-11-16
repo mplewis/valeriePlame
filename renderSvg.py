@@ -8,6 +8,11 @@ import time
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
 
+cfg = loadConfig()
+season = cfg['oneStop']['season']
+year = str(cfg['oneStop']['year'])
+svgDir = cfg['dataLoc']['svgDir']
+
 def initDictKey(dic, key):
 	if not key in dic:
 		dic[key] = 0
@@ -26,11 +31,6 @@ def getPluralStr(num, string):
 
 def renderAllSvgFromMostRecentData():
 	startTime = time.clock()
-
-	cfg = loadConfig()
-	season = cfg['oneStop']['season']
-	year = str(cfg['oneStop']['year'])
-	svgDir = cfg['dataLoc']['svgDir']
 
 	freshDataLoc = fileUtils.getMostRecentFile()
 
@@ -164,6 +164,9 @@ def renderAllSvgFromMostRecentData():
 
 	totalTime = time.clock() - startTime
 	return totalTime
+
+def renderTimeSvgFromDiffData():
+	pass
 
 if __name__ == '__main__':
 	print 'Rendering SVGs from ' + str(fileUtils.getMostRecentFile()) + '...'
