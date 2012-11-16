@@ -4,7 +4,6 @@ import pygal
 import pickle
 import oneStopUtils
 import fileUtils
-import time
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
 
@@ -30,8 +29,6 @@ def getPluralStr(num, string):
 		return string + 's'
 
 def renderAllSvgFromMostRecentData():
-	startTime = time.clock()
-
 	freshDataLoc = fileUtils.getMostRecentFile()
 
 	with open(freshDataLoc, 'r') as dataFile:
@@ -162,13 +159,10 @@ def renderAllSvgFromMostRecentData():
 		}])
 		chart.render_to_file(svgDir + '/' + subj + '.svg')
 
-	totalTime = time.clock() - startTime
-	return totalTime
-
 def renderTimeSvgFromDiffData():
 	pass
 
 if __name__ == '__main__':
 	print 'Rendering SVGs from ' + str(fileUtils.getMostRecentFile()) + '...'
-	time = renderAllSvgFromMostRecentData()
-	print 'Finished in', time, 'seconds.'
+	renderAllSvgFromMostRecentData()
+	print 'Done. SVGs saved to ' + svgDir + '.'
