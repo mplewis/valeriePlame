@@ -3,22 +3,26 @@ import pickle
 import mathUtils
 from loadConfig import loadConfig
 
-cfg = loadConfig()
+def localConfig():
+	cfg = loadConfig()
 
-statsOutputDir = cfg['dataLoc']['statsDir']
+	statsOutputDir = cfg['dataLoc']['statsDir']
 
-statsExt = cfg['dataLoc']['statsFiles']['statsExt']
+	statsExt = cfg['dataLoc']['statsFiles']['statsExt']
 
-openClosedRawFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + statsExt
-openClosedRawFileLoc = statsOutputDir + '/' + openClosedRawFileName
+	openClosedRawFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + statsExt
+	openClosedRawFileLoc = statsOutputDir + '/' + openClosedRawFileName
 
-openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
-openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
+	openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
+	openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
 
-sanityCheckColumn = cfg['stats']['sanityCheckColumn']
-sanityPercent = cfg['stats']['sanityCheckPercent']
+	sanityCheckColumn = cfg['stats']['sanityCheckColumn']
+	sanityPercent = cfg['stats']['sanityCheckPercent']
 
 def processRawData():
+	# set up local config vars
+	localConfig()
+
 	# load and unpickle stats data dict
 	with open(openClosedRawFileLoc, 'r') as dataIn:
 		stats = pickle.load(dataIn)

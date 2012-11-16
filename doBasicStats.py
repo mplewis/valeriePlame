@@ -9,16 +9,17 @@ from umnCourseObj import UmnCourse, UmnSection
 from consoleSize import consoleSize
 from dynPrint import dynPrint
 
-cfg = loadConfig()
-courseDataDir = cfg['dataLoc']['courseDataDir']
-courseDataExt = cfg['dataLoc']['courseDataExt']
-statsOutputDir = cfg['dataLoc']['statsDir']
+def localConfig():
+	cfg = loadConfig()
+	courseDataDir = cfg['dataLoc']['courseDataDir']
+	courseDataExt = cfg['dataLoc']['courseDataExt']
+	statsOutputDir = cfg['dataLoc']['statsDir']
 
-openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
-openClosedFileLoc = statsOutputDir + '/' + openClosedFileName
+	openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
+	openClosedFileLoc = statsOutputDir + '/' + openClosedFileName
 
-undergradCoursesOnly = cfg['oneStop']['undergradCoursesOnly']
-maxCourseLevel = cfg['oneStop']['maxUndergradLevel']
+	undergradCoursesOnly = cfg['oneStop']['undergradCoursesOnly']
+	maxCourseLevel = cfg['oneStop']['maxUndergradLevel']
 
 class DataAnalyzer:
 	def __init__(self, dataFileLoc):
@@ -40,6 +41,9 @@ class DataAnalyzer:
 		return "Data from " + str(fileTime) + ': ' + str(self.data)
 
 def getUndergradStats(courseDict):
+	# set up local config vars
+	localConfig()
+
 	stats = {}
 	stats['numCoursesTotal'] = 0
 	stats['numCoursesAllSectionsClosed'] = 0
