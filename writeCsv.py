@@ -45,4 +45,6 @@ def writeCsv():
 			writer.writerow(dataItem)
 
 if __name__ == '__main__':
+	print 'Processing data from ' + openClosedProcessedFileLoc + '...'
 	writeCsv()
+	print 'Done. CSV written to ' + csvOutLoc + '.'
