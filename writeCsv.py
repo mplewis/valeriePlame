@@ -6,13 +6,10 @@ from loadConfig import loadConfig
 
 def localConfig():
 	cfg = loadConfig()
-
 	statsOutputDir = cfg['dataLoc']['statsDir']
 	statsExt = cfg['dataLoc']['statsFiles']['statsExt']
-
 	openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
 	openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
-
 	csvOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csvOut'] + '.csv'
 
 def writeCsv():

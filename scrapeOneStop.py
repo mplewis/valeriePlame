@@ -24,9 +24,8 @@ def oneStopStrainer(tagName, tagAttrs):
 	else:
 		return False
 
-oneStopRelevant = SoupStrainer(oneStopStrainer)
-
 def bsParseHtml(rawHtml):
+	oneStopRelevant = SoupStrainer(oneStopStrainer)
 	oneStop = BeautifulSoup(rawHtml, 'lxml', parse_only = oneStopRelevant)
 
 	#with open('pretty.html', 'w') as prettyOut:

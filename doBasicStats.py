@@ -14,10 +14,8 @@ def localConfig():
 	courseDataDir = cfg['dataLoc']['courseDataDir']
 	courseDataExt = cfg['dataLoc']['courseDataExt']
 	statsOutputDir = cfg['dataLoc']['statsDir']
-
 	openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
 	openClosedFileLoc = statsOutputDir + '/' + openClosedFileName
-
 	undergradCoursesOnly = cfg['oneStop']['undergradCoursesOnly']
 	maxCourseLevel = cfg['oneStop']['maxUndergradLevel']
 

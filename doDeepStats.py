@@ -5,17 +5,12 @@ from loadConfig import loadConfig
 
 def localConfig():
 	cfg = loadConfig()
-
 	statsOutputDir = cfg['dataLoc']['statsDir']
-
 	statsExt = cfg['dataLoc']['statsFiles']['statsExt']
-
 	openClosedRawFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + statsExt
 	openClosedRawFileLoc = statsOutputDir + '/' + openClosedRawFileName
-
 	openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
 	openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
-
 	sanityCheckColumn = cfg['stats']['sanityCheckColumn']
 	sanityPercent = cfg['stats']['sanityCheckPercent']
 
