@@ -7,17 +7,15 @@ import time
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
 from consoleSize import consoleSize
-from dynPrint import dynPrint
 
-def localConfig():
-	cfg = loadConfig()
-	courseDataDir = cfg['dataLoc']['courseDataDir']
-	courseDataExt = cfg['dataLoc']['courseDataExt']
-	statsOutputDir = cfg['dataLoc']['statsDir']
-	openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
-	openClosedFileLoc = statsOutputDir + '/' + openClosedFileName
-	undergradCoursesOnly = cfg['oneStop']['undergradCoursesOnly']
-	maxCourseLevel = cfg['oneStop']['maxUndergradLevel']
+cfg = loadConfig()
+courseDataDir = cfg['dataLoc']['courseDataDir']
+courseDataExt = cfg['dataLoc']['courseDataExt']
+statsOutputDir = cfg['dataLoc']['statsDir']
+openClosedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['raw'] + '.' + cfg['dataLoc']['statsFiles']['statsExt']
+openClosedFileLoc = statsOutputDir + '/' + openClosedFileName
+undergradCoursesOnly = cfg['oneStop']['undergradCoursesOnly']
+maxCourseLevel = cfg['oneStop']['maxUndergradLevel']
 
 class DataAnalyzer:
 	def __init__(self, dataFileLoc):
@@ -39,9 +37,6 @@ class DataAnalyzer:
 		return "Data from " + str(fileTime) + ': ' + str(self.data)
 
 def getUndergradStats(courseDict):
-	# set up local config vars
-	localConfig()
-
 	stats = {}
 	stats['numCoursesTotal'] = 0
 	stats['numCoursesAllSectionsClosed'] = 0
@@ -74,7 +69,9 @@ def getUndergradStats(courseDict):
 				stats['numSeatsOpen'] += section.getSeatsOpen()
 	return stats
 
-if __name__ == '__main__':
+def processAllFiles(printProgress = False):
+	from dynPrint import dynPrint
+
 	def statusOut():
 		out = str(pctComplete) + '% complete: ' + \
 			'File ' + str(numFilesProcessed + 1) + '/' + str(numFilesTotal) + \
@@ -94,7 +91,8 @@ if __name__ == '__main__':
 		allData = {}
 	numFilesProcessed = 0
 	numFilesTotal = len(filesToAnalyze)
-	print 'Analyzing datafiles:', numFilesTotal, 'files to analyze.'
+	if printProgress:
+		print 'Analyzing datafiles:', numFilesTotal, 'files to analyze.'
 	if numFilesTotal > 0:
 		startTime = time.clock()
 		alignRightSpacer = ''
@@ -117,11 +115,16 @@ if __name__ == '__main__':
 					if len(alignRightSpacer) == 0:
 						break
 					alignRightSpacer = alignRightSpacer[:-1]
-			dynPrint(statusOut())
+			if printProgress:
+				dynPrint(statusOut())
 			dRead = DataAnalyzer(fileToAnalyze)
 			dRead.refresh()
 			allData[fileTime] = dRead.getData()
 			numFilesProcessed += 1
 		with open(openClosedFileLoc, 'w') as dataOut:
 			pickle.dump(allData, dataOut)
-		dynPrint('Done. Data stored to ' + openClosedFileLoc + '.\n')
+		if printProgress:
+			dynPrint('Done. Data stored to ' + openClosedFileLoc + '.\n')
+
+if __name__ == '__main__':
+	processAllFiles(printProgress = True)

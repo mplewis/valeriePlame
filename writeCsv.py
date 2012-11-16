@@ -4,18 +4,14 @@ import datetime
 import mathUtils
 from loadConfig import loadConfig
 
-def localConfig():
-	cfg = loadConfig()
-	statsOutputDir = cfg['dataLoc']['statsDir']
-	statsExt = cfg['dataLoc']['statsFiles']['statsExt']
-	openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
-	openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
-	csvOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csvOut'] + '.csv'
+cfg = loadConfig()
+statsOutputDir = cfg['dataLoc']['statsDir']
+statsExt = cfg['dataLoc']['statsFiles']['statsExt']
+openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
+openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
+csvOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csvOut'] + '.csv'
 
 def writeCsv():
-	# set up local config vars
-	localConfig()
-	
 	# open processed data
 	with open(openClosedProcessedFileLoc, 'r') as processedDictIn:
 		stats = pickle.load(processedDictIn)
