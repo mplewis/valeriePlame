@@ -48,7 +48,7 @@ def getPluralStr(num, string):
 	else:
 		return string + 's'
 
-def renderAllSvgFromMostRecentData(printStatus = True):
+def renderAllSvgFromMostRecentData(printProgress = False):
 	dynPrint('\tScraping data...')
 
 	freshDataLoc = fileUtils.getMostRecentFile()
@@ -166,7 +166,7 @@ def renderAllSvgFromMostRecentData(printStatus = True):
 		}])
 		chart.render_to_file(svgDir + '/' + subj + '.svg')
 
-def renderTimeSvgFromDiffData(printStatus = False):
+def renderTimeSvgFromDiffData(printProgress = False):
 	with open(openClosedProcessedFileLoc, 'r') as diffFile:
 		diffData = pickle.load(diffFile)
 	sortedKeys = sorted(diffData.keys())
@@ -197,7 +197,7 @@ def renderTimeSvgFromDiffData(printStatus = False):
 
 if __name__ == '__main__':
 	print 'Rendering subject SVGs from ' + fileUtils.getMostRecentFile() + '...'
-	#renderAllSvgFromMostRecentData(printStatus = True)
+	renderAllSvgFromMostRecentData(printStatus = True)
 	dynPrint('Done. Rendering diff SVGs from ' + openClosedProcessedFileLoc + '...\n')
 	renderTimeSvgFromDiffData(printStatus = True)
 	dynPrint('Done. SVGs saved to ' + svgDir + '/.\n')
