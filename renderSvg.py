@@ -17,6 +17,8 @@ statsOutputDir = cfg['dataLoc']['statsDir']
 statsExt = cfg['dataLoc']['statsFiles']['statsExt']
 openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
 openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
+firstUsefulTime = cfg['svg']['firstUsefulTime']
+customChartList = cfg['svg']['chartsToRender']
 
 # modified default Pygal style
 customChartStyle = pygal.style.Style( \
@@ -47,6 +49,14 @@ def getPluralStr(num, string):
 		return string
 	else:
 		return string + 's'
+
+def getUsefulSortedKeys(unorderedDict):
+	sortedKeys = sorted(unorderedDict.keys())
+	def isUsefulData(key):
+		key = int(key)
+		return key > firstUsefulTime
+	usefulKeys = filter(isUsefulData, sortedKeys)
+	return usefulKeys
 
 def renderAllSvgFromMostRecentData(printProgress = False):
 
@@ -170,14 +180,8 @@ def renderAllSvgFromMostRecentData(printProgress = False):
 		chart.render_to_file(svgDir + '/' + subj + '.svg')
 
 def renderTimeSvgFromDiffData(printProgress = False):
-	with open(openClosedProcessedFileLoc, 'r') as diffFile:
-		diffData = pickle.load(diffFile)
-	sortedKeys = sorted(diffData.keys())
-	def isUsefulData(key):
-		key = int(key)
-		firstUsefulTime = 1352793600 # everything after this counts
-		return key > firstUsefulTime
-	usefulKeys = filter(isUsefulData, sortedKeys)
+	diffData = fileUtils.unpickle(openClosedProcessedFileLoc)
+	usefulKeys = getUsefulSortedKeys(diffData)
 	columns = diffData[diffData.keys()[0]].keys()
 	def isDiffColumn(colName):
 		return colName.endswith('Diff')
@@ -185,7 +189,7 @@ def renderTimeSvgFromDiffData(printProgress = False):
 	for column in diffColumns:
 		if printProgress:
 			dynPrint('\tRendering ' + column + '...')
-		svgOutLoc = svgDir + '/' + column + '.svg'
+		chartOutLoc = svgDir + '/' + column + '.svg'
 		chart = pygal.Line(fill = True)
 		chart.title = column
 		colData = []
@@ -196,10 +200,53 @@ def renderTimeSvgFromDiffData(printProgress = False):
 			prettyTime = datetime.datetime.fromtimestamp(int(key)).strftime('%m/%d/%Y %H:%M:%S')
 			prettyTimeDict[key] = prettyTime
 		chart.add('Data', colData)
-		chart.render_to_file(svgOutLoc)
+		chart.render_to_file(chartOutLoc)
+
+def renderCustomCharts(printProgress = False):
+	diffData = fileUtils.unpickle(openClosedProcessedFileLoc)
+	for chartData in customChartList:
+		chartOutLoc = svgDir + '/' + chartData['fileName'] + '.svg'
+		if printProgress:
+			dynPrint('Rendering ' + chartOutLoc + '...')
+		chartTitle = chartData['chartTitle']
+		dataTitle = chartData['seriesTitle']
+		dataColumn = chartData['column']
+		dataMult = chartData['dataMult']
+		usefulKeys = getUsefulSortedKeys(diffData)
+		chart = pygal.Line(fill = True)
+		chart.title = chartTitle
+		colData = []
+		prettyTimeDict = {}
+		for key in usefulKeys:
+			dataPoint = {}
+			dateItem = diffData[key]
+			data = dateItem[dataColumn] * dataMult
+			prettyTime = datetime.datetime.fromtimestamp(int(key)).strftime('%m/%d %H:%M')
+			prettyTimeDict[key] = prettyTime
+			prettyInterval = \
+				datetime.datetime.fromtimestamp(int(key) - 1800).strftime('%m/%d: %H:%M') + ' to ' + \
+				datetime.datetime.fromtimestamp(int(key)).strftime('%H:%M')
+			dataPoint['value'] = data
+			dataPoint['label'] = prettyInterval
+			colData.append(dataPoint)
+		prettyTimeLabels = []
+		keyCount = 0
+		for timeKey in usefulKeys[:]:
+			# this is a magic equation that tells us whether a unixtime is from 0 to 5 minutes past 8am
+			if ((int(timeKey) + 3600 * 10) % 86400) < 300:
+				prettyTimeLabels.append(datetime.datetime.fromtimestamp(int(timeKey)).strftime('%m/%d %H:%M'))
+			else:
+				prettyTimeLabels.append('')
+		chart.x_labels = prettyTimeLabels
+		chart.add(dataTitle, colData)
+		chart.render_to_file(chartOutLoc)
+	if printProgress:
+		dynPrint('Done.')
+
 
 if __name__ == '__main__':
-	renderAllSvgFromMostRecentData(printProgress = True)
-	dynPrint('Done. Rendering diff SVGs from ' + openClosedProcessedFileLoc + '...\n')
-	renderTimeSvgFromDiffData(printProgress = True)
-	dynPrint('Done. SVGs saved to ' + svgDir + '/.\n')
+	#renderAllSvgFromMostRecentData(printProgress = True)
+	#dynPrint('Done. Rendering diff SVGs from ' + openClosedProcessedFileLoc + '...\n')
+	#renderTimeSvgFromDiffData(printProgress = True)
+	#dynPrint('Done. SVGs saved to ' + svgDir + '/.\n')
+	renderCustomCharts(printProgress = True)
