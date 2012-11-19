@@ -49,9 +49,11 @@ def getPluralStr(num, string):
 		return string + 's'
 
 def renderAllSvgFromMostRecentData(printProgress = False):
-	dynPrint('\tScraping data...')
 
 	freshDataLoc = fileUtils.getMostRecentFile()
+
+	if printProgress:
+		print('Rendering subject SVGs from ' + freshDataLoc + '...')
 
 	with open(freshDataLoc, 'r') as dataFile:
 		courseDict = pickle.load(dataFile)
@@ -118,7 +120,8 @@ def renderAllSvgFromMostRecentData(printProgress = False):
 	chart.render_to_file(svgDir + '/' + 'undergrad' + '.svg')
 
 	for subj in ugCourseSubjCount:
-		dynPrint('\tRendering ' + subj + '...')
+		if printProgress:
+			dynPrint('\tRendering ' + subj + '...')
 		initDictKey(ugCourseSubjAllClosedCount, subj)
 		initDictKey(ugCourseSubjAllOpenCount, subj)
 		initDictKey(ugCourseSubjSomeOpenCount, subj)
@@ -180,7 +183,7 @@ def renderTimeSvgFromDiffData(printProgress = False):
 		return colName.endswith('Diff')
 	diffColumns = filter(isDiffColumn, columns)
 	for column in diffColumns:
-		if printStatus:
+		if printProgress:
 			dynPrint('\tRendering ' + column + '...')
 		svgOutLoc = svgDir + '/' + column + '.svg'
 		chart = pygal.Line(fill = True)
@@ -196,8 +199,7 @@ def renderTimeSvgFromDiffData(printProgress = False):
 		chart.render_to_file(svgOutLoc)
 
 if __name__ == '__main__':
-	print 'Rendering subject SVGs from ' + fileUtils.getMostRecentFile() + '...'
-	renderAllSvgFromMostRecentData(printStatus = True)
+	renderAllSvgFromMostRecentData(printProgress = True)
 	dynPrint('Done. Rendering diff SVGs from ' + openClosedProcessedFileLoc + '...\n')
-	renderTimeSvgFromDiffData(printStatus = True)
+	renderTimeSvgFromDiffData(printProgress = True)
 	dynPrint('Done. SVGs saved to ' + svgDir + '/.\n')
