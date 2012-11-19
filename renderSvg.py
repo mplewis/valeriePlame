@@ -214,7 +214,7 @@ def renderCustomCharts(printProgress = False):
 		dataMult = chartData['dataMult']
 		usefulKeys = getUsefulSortedKeys(diffData)
 		chart = pygal.Line(fill = True)
-		chart.title = chartTitle
+		chart.title = chartTitle + ' (' + season + ' ' + year + ')'
 		colData = []
 		prettyTimeDict = {}
 		for key in usefulKeys:
@@ -245,8 +245,5 @@ def renderCustomCharts(printProgress = False):
 
 
 if __name__ == '__main__':
-	#renderAllSvgFromMostRecentData(printProgress = True)
-	#dynPrint('Done. Rendering diff SVGs from ' + openClosedProcessedFileLoc + '...\n')
-	#renderTimeSvgFromDiffData(printProgress = True)
-	#dynPrint('Done. SVGs saved to ' + svgDir + '/.\n')
 	renderCustomCharts(printProgress = True)
+	dynPrint('Done. Custom SVGs rendered to ' + svgDir + '/.\n')
