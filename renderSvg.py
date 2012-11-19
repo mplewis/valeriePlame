@@ -4,13 +4,33 @@ import pygal
 import pickle
 import oneStopUtils
 import fileUtils
+import datetime
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
+from dynPrint import dynPrint
 
 cfg = loadConfig()
 season = cfg['oneStop']['season']
 year = str(cfg['oneStop']['year'])
 svgDir = cfg['dataLoc']['svgDir']
+statsOutputDir = cfg['dataLoc']['statsDir']
+statsExt = cfg['dataLoc']['statsFiles']['statsExt']
+openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
+openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
+
+# modified default Pygal style
+customChartStyle = pygal.style.Style( \
+	opacity = '.4',
+	opacity_hover = '.75',
+	transition = '.25s ease-out',
+	background = '#7c111a',
+	plot_background = 'transparent',
+	foreground = '#dcc', # legend text
+	foreground_light = '#fff', # title text
+	# unused: foreground_dark = '#00f',
+	# red, yellow, green
+	colors = ('#e95355', '#feed6c', '#b6e354')
+)
 
 def initDictKey(dic, key):
 	if not key in dic:
@@ -28,7 +48,9 @@ def getPluralStr(num, string):
 	else:
 		return string + 's'
 
-def renderAllSvgFromMostRecentData():
+def renderAllSvgFromMostRecentData(printStatus = True):
+	dynPrint('\tScraping data...')
+
 	freshDataLoc = fileUtils.getMostRecentFile()
 
 	with open(freshDataLoc, 'r') as dataFile:
@@ -68,22 +90,6 @@ def renderAllSvgFromMostRecentData():
 			ugSomeSectionsOpen += 1
 			incrDictKey(ugCourseSubjSomeOpenCount, subjAbbr)
 
-	# modified default Pygal style
-	customChartStyle = pygal.style.Style( \
-		opacity = '.4',
-		opacity_hover = '.75',
-		transition = '.25s ease-out',
-		background = '#7c111a',
-		plot_background = 'transparent',
-		foreground = '#dcc', # legend text
-		foreground_light = '#fff', # title text
-		# unused: foreground_dark = '#00f',
-		# red, yellow, green
-		colors = ('#e95355', '#feed6c', '#b6e354')
-	)
-
-	#customChartStyle = pygal.style.DarkSolarizedStyle
-
 	oneStopHomeUrl = 'http://onestop2.umn.edu/courseinfo/searchcriteria.jsp?institution=UMNTC'
 	chart = pygal.Pie(
 		style = customChartStyle,
@@ -112,6 +118,7 @@ def renderAllSvgFromMostRecentData():
 	chart.render_to_file(svgDir + '/' + 'undergrad' + '.svg')
 
 	for subj in ugCourseSubjCount:
+		dynPrint('\tRendering ' + subj + '...')
 		initDictKey(ugCourseSubjAllClosedCount, subj)
 		initDictKey(ugCourseSubjAllOpenCount, subj)
 		initDictKey(ugCourseSubjSomeOpenCount, subj)
@@ -159,10 +166,38 @@ def renderAllSvgFromMostRecentData():
 		}])
 		chart.render_to_file(svgDir + '/' + subj + '.svg')
 
-def renderTimeSvgFromDiffData():
-	pass
+def renderTimeSvgFromDiffData(printStatus = False):
+	with open(openClosedProcessedFileLoc, 'r') as diffFile:
+		diffData = pickle.load(diffFile)
+	sortedKeys = sorted(diffData.keys())
+	def isUsefulData(key):
+		key = int(key)
+		firstUsefulTime = 1352793600 # everything after this counts
+		return key > firstUsefulTime
+	usefulKeys = filter(isUsefulData, sortedKeys)
+	columns = diffData[diffData.keys()[0]].keys()
+	def isDiffColumn(colName):
+		return colName.endswith('Diff')
+	diffColumns = filter(isDiffColumn, columns)
+	for column in diffColumns:
+		if printStatus:
+			dynPrint('\tRendering ' + column + '...')
+		svgOutLoc = svgDir + '/' + column + '.svg'
+		chart = pygal.Line(fill = True)
+		chart.title = column
+		colData = []
+		prettyTimeDict = {}
+		for key in usefulKeys:
+			dateItem = diffData[key]
+			colData.append(dateItem[column])
+			prettyTime = datetime.datetime.fromtimestamp(int(key)).strftime('%m/%d/%Y %H:%M:%S')
+			prettyTimeDict[key] = prettyTime
+		chart.add('Data', colData)
+		chart.render_to_file(svgOutLoc)
 
 if __name__ == '__main__':
-	print 'Rendering SVGs from ' + str(fileUtils.getMostRecentFile()) + '...'
-	renderAllSvgFromMostRecentData()
-	print 'Done. SVGs saved to ' + svgDir + '.'
+	print 'Rendering subject SVGs from ' + fileUtils.getMostRecentFile() + '...'
+	#renderAllSvgFromMostRecentData(printStatus = True)
+	dynPrint('Done. Rendering diff SVGs from ' + openClosedProcessedFileLoc + '...\n')
+	renderTimeSvgFromDiffData(printStatus = True)
+	dynPrint('Done. SVGs saved to ' + svgDir + '/.\n')
