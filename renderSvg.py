@@ -234,7 +234,7 @@ def renderCustomCharts(printProgress = False):
 		for timeKey in usefulKeys[:]:
 			# this is a magic equation that tells us whether a unixtime is from 0 to 5 minutes past 8am
 			if ((int(timeKey) + 3600 * 10) % 86400) < 300:
-				prettyTimeLabels.append(datetime.datetime.fromtimestamp(int(timeKey)).strftime('%m/%d %H:%M'))
+				prettyTimeLabels.append(datetime.datetime.fromtimestamp(int(timeKey)).strftime('%m/%d 8am'))
 			else:
 				prettyTimeLabels.append('')
 		chart.x_labels = prettyTimeLabels
