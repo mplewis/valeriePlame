@@ -8,6 +8,7 @@ import time
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
 from consoleSize import consoleSize
+from dynPrint import dynPrint
 
 cfg = loadConfig()
 
@@ -80,8 +81,6 @@ def getUndergradStats(courseDict):
 	return stats
 
 def processScrapedToRaw(printProgress = False):
-	from dynPrint import dynPrint
-
 	def statusOut():
 		out = str(pctComplete) + '% complete: ' + \
 			'File ' + str(numFilesProcessed + 1) + '/' + str(numFilesTotal) + \
@@ -135,7 +134,7 @@ def processScrapedToRaw(printProgress = False):
 			pickle.dump(allData, dataOut)
 
 def processRawToDiff():
-	# load and unpickle stats data dict
+	# load and unpickle stats raw data dict
 	with open(openClosedRawFileLoc, 'r') as dataIn:
 		stats = pickle.load(dataIn)
 
@@ -155,41 +154,34 @@ def processRawToDiff():
 		if not mathUtils.withinPercent(sanityPercent, saneMedian, sanityTestVal):
 			del stats[key]
 
-	# make a CSV column list from existing columns in stats dict
-
-	# get a list of columns from any (since order is indeterminate) key in the dict,
-	#     then sort the list of columns alphabetically
-	anyKey = stats.keys()[0]
-	columns = stats[anyKey].keys()
-	columns.sort()
-	# add columns with 'Diff' appended to the column list
-	for key in columns[:]:
-		columns.append(key + 'Diff')
-	# prepend a time column
-	columns.insert(0, 'time')
-
 	# sort dict keys into sortedKeys
 	sortedKeys = stats.keys()
 	sortedKeys.sort()
 
+	# generate diff data for every column
 	for dateKey in sortedKeys:
 		dataItem = stats[dateKey]
 
+		# can't generate diff data for the first data point,
+		#     so only get diff data for every other point
 		if not dateKey == sortedKeys[0]:
 			currKeyIndex = sortedKeys.index(dateKey)
 			prevKeyIndex = currKeyIndex - 1
 			prevKey = sortedKeys[prevKeyIndex]
 			prevDataItem = stats[prevKey]
-			for colKey in dataItem.keys():
+			for colKey in dataItem.keys()[:]:
 				colKeyDiff = colKey + 'Diff'
 				colValDiff = dataItem[colKey] - prevDataItem[colKey]
 				dataItem[colKeyDiff] = colValDiff
+
+			# generate diff data for seats open, adjusted for seats that the University adds or removes
+			dataItem['numSeatsOpenDelta'] = dataItem['numSeatsOpenDiff'] - dataItem['numSeatsTotalDiff']
 
 	with open(openClosedProcessedFileLoc, 'w') as processedDictOut:
 		pickle.dump(stats, processedDictOut)
 
 if __name__ == '__main__':
 	processScrapedToRaw(printProgress = True)
-	print 'Processing raw data from ' + openClosedRawFileLoc + '...'
+	dynPrint('Done. Processing raw data from ' + openClosedRawFileLoc + '...\n')
 	processRawToDiff()
 	print 'Done. Raw data processed into ' + openClosedProcessedFileLoc + '.'
