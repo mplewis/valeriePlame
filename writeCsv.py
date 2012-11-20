@@ -22,9 +22,6 @@ def writeCsv():
 	anyKey = stats.keys()[0]
 	columns = stats[anyKey].keys()
 	columns.sort()
-	# add columns with 'Diff' appended to the column list
-	for key in columns[:]:
-		columns.append(key + 'Diff')
 	# prepend a time column
 	columns.insert(0, 'time')
 
