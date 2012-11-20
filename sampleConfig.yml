@@ -1,9 +1,8 @@
-# DON'T FORGET TO COPY ME TO CONFIG.YML OR NOTHING WORKS! Thanks :)
 # Flask server settings
 server:
     # if develMode = True, Flask web server will serve to localhost only
     # for security purposes; set develMode to False to serve publicly
-    develMode: True
+    develMode: False
     port: 8080
 # OneStop scraping settings
 oneStop:
@@ -23,6 +22,29 @@ stats:
     #     the row is dropped
     sanityCheckColumn: numSectionsTotal
     sanityCheckPercent: 5
+# rendering options
+svg:
+    # everything before this unixtime is ignored in time series charts
+    firstUsefulTime: 1352793600
+    chartsToRender:
+        -
+            fileName: seatsfilled
+            chartTitle: Seats filled per 30-minute interval
+            seriesTitle: Seats
+            column: numSeatsOpenDelta
+            dataMult: -1
+        -
+            fileName: sectionsfilled
+            chartTitle: Sections filled per 30-minute interval
+            seriesTitle: Sections
+            column: numSectionsOpenDiff
+            dataMult: -1
+        -
+            fileName: coursesfilled
+            chartTitle: Courses filled per 30-minute interval
+            seriesTitle: Courses
+            column: numCoursesAllSectionsOpenDiff
+            dataMult: -1
 # location of data files
 dataLoc:
     # file that holds pickled subject dict
@@ -46,4 +68,4 @@ dataLoc:
             raw: openClosedRaw
             processed: openClosedProc
     # where to store generated csv files
-    csvOut: testData
+    csvDir: testData
