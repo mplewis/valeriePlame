@@ -9,9 +9,9 @@ statsOutputDir = cfg['dataLoc']['statsDir']
 statsExt = cfg['dataLoc']['statsFiles']['statsExt']
 openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
 openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
-csvOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csvDir'] + '.csv'
+csvFullOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csvDir'] + '.csv'
 
-def writeCsv():
+def writeFullCsv():
 	# open processed data
 	with open(openClosedProcessedFileLoc, 'r') as processedDictIn:
 		stats = pickle.load(processedDictIn)
@@ -30,7 +30,7 @@ def writeCsv():
 	sortedKeys.sort()
 
 	# write data to a CSV file using the csv library
-	with open(csvOutLoc, 'w') as csvOut:
+	with open(csvFullOutLoc, 'w') as csvOut:
 		writer = csv.DictWriter(csvOut, columns, restval = '0')
 		writer.writeheader()
 
@@ -41,7 +41,10 @@ def writeCsv():
 			dataItem['time'] = prettyTime
 			writer.writerow(dataItem)
 
+def writeWebCsv():
+	pass
+
 if __name__ == '__main__':
 	print 'Processing data from ' + openClosedProcessedFileLoc + '...'
-	writeCsv()
-	print 'Done. CSV written to ' + csvOutLoc + '.'
+	writeFullCsv()
+	print 'Done. CSV written to ' + csvFullOutLoc + '.'
