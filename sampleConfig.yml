@@ -80,4 +80,4 @@ dataLoc:
         full:
             loc: fullData
     # where to store json data for stock graphs
-    stockJson: ~/webData.json
+    stockJson: /home/user/webData.json
