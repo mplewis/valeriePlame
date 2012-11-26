@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import json
 import fileUtils
 from loadConfig import loadConfig
@@ -7,7 +9,7 @@ statsOutputDir = cfg['dataLoc']['statsDir']
 statsExt = cfg['dataLoc']['statsFiles']['statsExt']
 openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
 openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
-jsonFullOutLoc = cfg['stockChart']['dataOutLoc']
+jsonFullOutLoc = cfg['dataLoc']['stockJson']
 firstUsefulTime = cfg['stockChart']['firstUsefulTime']
 dataColumn = cfg['stockChart']['column']
 dataMult = cfg['stockChart']['dataMult']

@@ -2,7 +2,7 @@
 server:
     # if develMode = True, Flask web server will serve to localhost only
     # for security purposes; set develMode to False to serve publicly
-    develMode: False
+    develMode: True
     port: 8080
 # OneStop scraping settings
 oneStop:
@@ -45,6 +45,13 @@ svg:
             seriesTitle: Courses
             column: numCoursesAllSectionsOpenDiff
             dataMult: -1
+stockChart:
+    # everything before this unixtime is ignored in time series charts
+    firstUsefulTime: 1352793600
+    # which column to use for the stock chart
+    column: numSeatsOpenDelta
+    # multiply data values by this number before writing into json
+    dataMult: -1
 # location of data files
 dataLoc:
     # file that holds pickled subject dict
@@ -68,4 +75,9 @@ dataLoc:
             raw: openClosedRaw
             processed: openClosedProc
     # where to store generated csv files
-    csvDir: testData
+    csv:
+        # full csv: verbose time, all columns
+        full:
+            loc: fullData
+    # where to store json data for stock graphs
+    stockJson: ~/webData.json

@@ -41,9 +41,6 @@ def writeFullCsv():
 			dataItem['time'] = prettyTime
 			writer.writerow(dataItem)
 
-def writeWebCsv():
-	pass
-
 if __name__ == '__main__':
 	print 'Processing data from ' + openClosedProcessedFileLoc + '...'
 	writeFullCsv()
