@@ -9,7 +9,7 @@ statsOutputDir = cfg['dataLoc']['statsDir']
 statsExt = cfg['dataLoc']['statsFiles']['statsExt']
 openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
 openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
-csvFullOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csvDir'] + '.csv'
+csvFullOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csv']['full']['loc'] + '.csv'
 
 def writeFullCsv():
 	# open processed data
