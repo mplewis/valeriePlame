@@ -100,8 +100,11 @@ def processScrapedToRaw(printProgress = False):
 		allData = {}
 	numFilesProcessed = 0
 	numFilesTotal = len(filesToAnalyze)
+	pluralText = 'files'
+	if numFilesTotal == 1:
+		pluralText = 'file'
 	if printProgress:
-		print 'Analyzing datafiles:', numFilesTotal, 'files to analyze.'
+		print 'Analyzing datafiles:', numFilesTotal, pluralText, 'to analyze.'
 	if numFilesTotal > 0:
 		startTime = time.clock()
 		alignRightSpacer = ''
