@@ -116,7 +116,10 @@ def processScrapedToRaw(printProgress = False):
 				etaTime = (timePassed / numFilesProcessed) * numfilesLeft
 				etaTimePretty = time.strftime('%H:%M:%S', time.gmtime(etaTime))
 				eta = ' (ETA: ' + etaTimePretty + ')'
-			consoleWidth = int(consoleSize()[0])
+			try:
+				consoleWidth = int(consoleSize()[0])
+			except ValueError:
+				consoleWidth = 80
 			while len(statusOut()) != consoleWidth:
 				if len(statusOut()) < consoleWidth:
 					alignRightSpacer += ' '
