@@ -7,25 +7,29 @@ statsOutputDir = cfg['dataLoc']['statsDir']
 statsExt = cfg['dataLoc']['statsFiles']['statsExt']
 openClosedProcessedFileName = cfg['dataLoc']['statsFiles']['openClosedData']['processed'] + '.' + statsExt
 openClosedProcessedFileLoc = statsOutputDir + '/' + openClosedProcessedFileName
-statsOutputDir = cfg['dataLoc']['statsDir']
-jsonFullOutLoc = cfg['dataLoc']['statsDir'] + '/' + 'webData.json'
+jsonFullOutLoc = cfg['stockChart']['dataOutLoc']
+firstUsefulTime = cfg['stockChart']['firstUsefulTime']
+dataColumn = cfg['stockChart']['column']
+dataMult = cfg['stockChart']['dataMult']
 
 diffData = fileUtils.unpickle(openClosedProcessedFileLoc)
 
 jsonData = []
 
-for key in sorted(diffData[diffData.keys()[0]]):
-	print key
+def getUsefulSortedKeys(unorderedDict):
+	sortedKeys = sorted(unorderedDict.keys())
+	def isUsefulData(key):
+		key = int(key)
+		return key > firstUsefulTime
+	usefulKeys = filter(isUsefulData, sortedKeys)
+	return usefulKeys
 
-sortedKeys = sorted(diffData.keys())[1:]
+usefulKeys = getUsefulSortedKeys(diffData)[1:]
 
-for key in sortedKeys:
-	print key
-
-for dateKey in sortedKeys:
-	jsDate = int(dateKey) * 1000
-	data = diffData[dateKey]['numSeatsOpenDelta']
-	print jsDate
+for dateKey in usefulKeys:
+	jsDate = (int(dateKey) - (6 * 3600)) * 1000
+	data = diffData[dateKey]['numSeatsOpenDelta'] * dataMult
 	jsonData.append([jsDate, data])
 
-print json.dumps(jsonData)
+with open(jsonFullOutLoc, 'w') as jsonOut:
+	json.dump(jsonData, jsonOut)
