@@ -211,20 +211,21 @@ def processScrapedToSubjectSeats(printProgress = False):
 		unprocessedFileKeysSet = set(saneFileKeys).difference(existingFileKeys)
 		print len(unprocessedFileKeysSet), 'unprocessed files'
 		unprocessedFileKeys = sorted(list(unprocessedFileKeysSet))
-		#print unprocessedFileKeys
-		for fileTime in unprocessedFileKeys:
-			fileLoc = courseDataDir + '/' + fileTime + '.' + courseDataExt
-			print fileLoc
-			try:
-				subjDataRaw = fileUtils.unpickle(fileLoc)
-			except IOError:
-				continue # with the next file if the one being opened doesn't exist
-			subjDataProc = getSubjSeatStats(subjList, subjDataRaw)
-			allData[fileTime] = subjDataProc
-			allData['_filesProcessed'].add(fileTime)
-			numFilesProcessed += 1
-		with open(subjectSeatsFileLoc, 'w') as dataOut:
-			cPickle.dump(allData, dataOut)
+		if len(unprocessedFileKeys) > 0:
+			for fileTime in unprocessedFileKeys:
+				fileLoc = courseDataDir + '/' + fileTime + '.' + courseDataExt
+				print fileLoc
+				try:
+					subjDataRaw = fileUtils.unpickle(fileLoc)
+				except IOError:
+					continue # with the next file if the one being opened doesn't exist
+				subjDataProc = getSubjSeatStats(subjList, subjDataRaw)
+				allData[fileTime] = subjDataProc
+				allData['_filesProcessed'].add(fileTime)
+				numFilesProcessed += 1
+			with open(subjectSeatsFileLoc, 'w') as dataOut:
+				cPickle.dump(allData, dataOut)
+		print 'Done.'
 
 if __name__ == '__main__':
 	processScrapedToOpenClosed(printProgress = True)
