@@ -33,7 +33,7 @@ undergradCoursesOnly = cfg['oneStop']['undergradCoursesOnly']
 maxCourseLevel = cfg['oneStop']['maxUndergradLevel']
 
 def getOpenClosedStats(courseDict):
-	columns = ['numCoursesTotal', 'numCoursesAllSectionsClosed', 'numCoursesSomeSectionsOpen', 'numSectionsTotal', 'numSectionsClosed', 'numSectionsOpen', 'numSeatsTotal', 'numSeatsFilled', 'numSeatsOpen']
+	columns = ['numCoursesTotal', 'numCoursesAllSectionsClosed', 'numCoursesSomeSectionsOpen', 'numCoursesAllSectionsOpen', 'numSectionsTotal', 'numSectionsClosed', 'numSectionsOpen', 'numSeatsTotal', 'numSeatsFilled', 'numSeatsOpen']
 	stats = {}
 	for column in columns:
 		stats[column] = 0
@@ -82,7 +82,7 @@ def processScrapedToOpenClosed(printProgress = False):
 	if numFilesTotal == 1:
 		pluralText = 'file'
 	if printProgress:
-		print 'Analyzing datafiles:', numFilesTotal, pluralText, 'to analyze.'
+		print 'Processing open/closed data:', numFilesTotal, pluralText, 'to analyze.'
 	if numFilesTotal > 0:
 		startTime = time.clock()
 		alignRightSpacer = ''
@@ -180,8 +180,12 @@ def getSubjSeatStats(subjList, subjDataRaw):
 		sectionsDict = course.getAllSections()
 		for sectionKey in sectionsDict:
 			section = sectionsDict[sectionKey]
-			subjDataProc[courseSubj]['numSeatsOpen'] += section.getSeatsOpen()
-			subjDataProc[courseSubj]['numSeatsTotal'] += section.getSeatsTotal()
+			seatsOpen = section.getSeatsOpen()
+			seatsTotal = section.getSeatsTotal()
+			subjDataProc['****']['numSeatsOpen'] += seatsOpen
+			subjDataProc['****']['numSeatsTotal'] += seatsTotal
+			subjDataProc[courseSubj]['numSeatsOpen'] += seatsOpen
+			subjDataProc[courseSubj]['numSeatsTotal'] += seatsTotal
 	return subjDataProc
 
 def processScrapedToSubjectSeats(printProgress = False):
@@ -205,22 +209,24 @@ def processScrapedToSubjectSeats(printProgress = False):
 		unprocessedFileKeysSet = set(saneFileKeys).difference(existingFileKeys)
 		print len(unprocessedFileKeysSet), 'unprocessed files'
 		unprocessedFileKeys = sorted(list(unprocessedFileKeysSet))
-		print unprocessedFileKeys[len(unprocessedFileKeys)]
-		for fileTime in unprocessedFileKeys[len(unprocessedFileKeys)]:
+		#print unprocessedFileKeys
+		for fileTime in unprocessedFileKeys:
 			fileLoc = courseDataDir + '/' + fileTime + '.' + courseDataExt
 			print fileLoc
 			subjDataRaw = fileUtils.unpickle(fileLoc)
 			subjDataProc = getSubjSeatStats(subjList, subjDataRaw)
 			allData[fileTime] = subjDataProc
 			allData['_filesProcessed'].add(fileTime)
-			print allData['_filesProcessed'], subjDataProc['CSCI']
+			#print allData['_filesProcessed']
+			#print '    ****', subjDataProc['****']
+			#print '    CSCI', subjDataProc['CSCI']
 			numFilesProcessed += 1
 		with open(subjectSeatsFileLoc, 'w') as dataOut:
 			pickle.dump(allData, dataOut)
 
 if __name__ == '__main__':
-	# processScrapedToOpenClosed(printProgress = True)
-	# dynPrint('Done. Processing raw data from ' + openClosedRawFileLoc + '...\n')
-	# processOpenClosedToDiff()
-	# print 'Done. Raw data processed into ' + openClosedProcessedFileLoc + '.'
+	processScrapedToOpenClosed(printProgress = True)
+	dynPrint('Done. Adding diff data to open/closed data...\n')
+	processOpenClosedToDiff()
+	print 'Done. Processing raw data to section data...'
 	processScrapedToSubjectSeats(printProgress = True)
