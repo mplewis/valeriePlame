@@ -204,7 +204,9 @@ def processScrapedToSubjectSeats(printProgress = False):
 		pluralText = 'file'
 	if numFilesTotal > 0:
 		openClosedData = fileUtils.unpickle(openClosedRawFileLoc)
-		saneFileKeys = sanityCheck(openClosedData)
+		saneOpenClosedFileKeys = sanityCheck(openClosedData)
+		saneOpenClosedFileKeysSet = set(saneOpenClosedFileKeys)
+		saneFileKeys = saneOpenClosedFileKeysSet.intersect(set(fileUtils.getAllFiles()))
 		existingFileKeys = allData['_filesProcessed']
 		unprocessedFileKeysSet = set(saneFileKeys).difference(existingFileKeys)
 		print len(unprocessedFileKeysSet), 'unprocessed files'
