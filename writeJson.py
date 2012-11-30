@@ -22,7 +22,7 @@ if __name__ == '__main__':
 	subjSeatsData = fileUtils.unpickle(subjectSeatsFileLoc)
 	del subjSeatsData['_filesProcessed']
 
-	print subjSeatsData
+	# print subjSeatsData
 
 	subjectDict = fileUtils.unpickle(subjectDataLoc)
 	subjects = sorted(subjectDict.keys())
