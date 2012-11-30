@@ -1,5 +1,5 @@
 import csv
-import pickle
+import cPickle
 import datetime
 import mathUtils
 from loadConfig import loadConfig
@@ -14,7 +14,7 @@ csvFullOutLoc = cfg['dataLoc']['statsDir'] + '/' + cfg['dataLoc']['csv']['full']
 def writeFullCsv():
 	# open processed data
 	with open(openClosedProcessedFileLoc, 'r') as processedDictIn:
-		stats = pickle.load(processedDictIn)
+		stats = cPickle.load(processedDictIn)
 
 	# make a CSV column list from existing columns in stats dict
 	# get a list of columns from any (since order is indeterminate) key in the dict,

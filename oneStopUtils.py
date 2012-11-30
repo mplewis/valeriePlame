@@ -1,13 +1,13 @@
 #!/usr/bin/python
 
-import pickle
+import cPickle
 from loadConfig import loadConfig
 
 cfg = loadConfig()
 subjListLoc = cfg['dataLoc']['subjList']
 
 with open(subjListLoc, 'r') as subjData:
-	subjList = pickle.load(subjData)
+	subjList = cPickle.load(subjData)
 
 def getFullSubjFromAbbr(subjAbbr):
 	return subjList[subjAbbr]

@@ -3,7 +3,7 @@
 import yaml
 import fileUtils
 import mathUtils
-import pickle
+import cPickle
 import time
 from loadConfig import loadConfig
 from umnCourseObj import UmnCourse, UmnSection
@@ -69,7 +69,7 @@ def processScrapedToOpenClosed(printProgress = False):
 	filesToAnalyze = fileUtils.getAllFiles(dataDir = courseDataDir, dataExt = courseDataExt, latestFirst = False)
 	try:
 		with open(openClosedRawFileLoc, 'r') as existingDataFile:
-			existingData = pickle.load(existingDataFile)
+			existingData = cPickle.load(existingDataFile)
 			fileNamesToAnalyze = [fileUtils.getFileNameFromPath(fileName) for fileName in filesToAnalyze]
 			fileNamesToAnalyze = list(set(fileNamesToAnalyze).difference(set(existingData)))
 			filesToAnalyze = [courseDataDir + '/' + fileName + '.' + courseDataExt for fileName in fileNamesToAnalyze]
@@ -115,7 +115,7 @@ def processScrapedToOpenClosed(printProgress = False):
 			allData[fileTime] = courseDataProc
 			numFilesProcessed += 1
 		with open(openClosedRawFileLoc, 'w') as dataOut:
-			pickle.dump(allData, dataOut)
+			cPickle.dump(allData, dataOut)
 
 # sanity check: remove outliers from the data set
 def sanityCheck(openClosedData):
@@ -139,9 +139,9 @@ def sanityCheck(openClosedData):
 	return sortedKeys
 
 def processOpenClosedToDiff():
-	# load and unpickle stats open/closed data dict
+	# load and unpickle.stats open/closed data dict
 	with open(openClosedRawFileLoc, 'r') as dataIn:
-		openClosed = pickle.load(dataIn)
+		openClosed = cPickle.load(dataIn)
 
 	sortedKeys = sanityCheck(openClosed)
 
@@ -165,7 +165,7 @@ def processOpenClosedToDiff():
 			dataItem['numSeatsOpenDelta'] = dataItem['numSeatsOpenDiff'] - dataItem['numSeatsTotalDiff']
 
 	with open(openClosedProcessedFileLoc, 'w') as processedDictOut:
-		pickle.dump(openClosed, processedDictOut)
+		cPickle.dump(openClosed, processedDictOut)
 
 def getSubjSeatStats(subjList, subjDataRaw):
 	columns = ['numSeatsOpen', 'numSeatsTotal']
@@ -194,7 +194,7 @@ def processScrapedToSubjectSeats(printProgress = False):
 	filesToAnalyze = fileUtils.getAllFiles(dataDir = courseDataDir, dataExt = courseDataExt, latestFirst = False)
 	try:
 		with open(subjectSeatsFileLoc, 'r') as existingDataFile:
-			allData = pickle.load(existingDataFile)
+			allData = cPickle.load(existingDataFile)
 	except IOError:
 		allData = {'_filesProcessed': set()}
 	numFilesProcessed = 0
@@ -223,7 +223,7 @@ def processScrapedToSubjectSeats(printProgress = False):
 			allData['_filesProcessed'].add(fileTime)
 			numFilesProcessed += 1
 		with open(subjectSeatsFileLoc, 'w') as dataOut:
-			pickle.dump(allData, dataOut)
+			cPickle.dump(allData, dataOut)
 
 if __name__ == '__main__':
 	processScrapedToOpenClosed(printProgress = True)

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import glob
-import pickle
+import cPickle
 from loadConfig import loadConfig
 
 cfg = loadConfig()
@@ -30,7 +30,7 @@ def getFileExtFromPath(filePath):
 
 def unpickle(fileLoc):
 	with open(fileLoc, 'r') as dataFile:
-		return pickle.load(dataFile)
+		return cPickle.load(dataFile)
 
 if __name__ == '__main__':
 	mostRecentDataFile = getMostRecentFile()

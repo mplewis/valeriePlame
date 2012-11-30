@@ -4,7 +4,7 @@ import urllib2
 import oneStopUtils
 import string
 import time
-import pickle
+import cPickle
 from loadConfig import loadConfig
 from unixTime import unixTime
 from bs4 import BeautifulSoup, SoupStrainer
@@ -107,7 +107,7 @@ def saveCourseDict():
 	courseDict = bsParseHtml(rawHtml)
 
 	with open(courseDataDir + '/' + str(timeScraped) + '.' + dataExt, 'w') as dataOut:
-		pickle.dump(courseDict, dataOut)
+		cPickle.dump(courseDict, dataOut)
 
 	totalTime = time.clock() - startTime
 	return totalTime

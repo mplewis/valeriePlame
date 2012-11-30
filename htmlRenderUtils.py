@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import pickle
+import cPickle
 import glob
 from loadConfig import loadConfig
 from jinja2 import Environment
@@ -12,7 +12,7 @@ def getSubjectsWithSvgFiles():
 
 	subjListLoc = cfg['dataLoc']['subjList']
 	with open(subjListLoc, 'r') as subjData:
-		fullSubjList = pickle.load(subjData)
+		fullSubjList = cPickle.load(subjData)
 
 	subjList = []
 	fileList = glob.glob(directory + '/' + '*.' + extension)

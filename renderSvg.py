@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import pygal
-import pickle
+import cPickle
 import oneStopUtils
 import fileUtils
 import datetime
@@ -66,7 +66,7 @@ def renderAllSvgFromMostRecentData(printProgress = False):
 		print('Rendering subject SVGs from ' + freshDataLoc + '...')
 
 	with open(freshDataLoc, 'r') as dataFile:
-		courseDict = pickle.load(dataFile)
+		courseDict = cPickle.load(dataFile)
 
 	numUndergrad = 0
 	numGraduate = 0
