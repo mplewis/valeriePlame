@@ -213,13 +213,14 @@ def processScrapedToSubjectSeats(printProgress = False):
 		for fileTime in unprocessedFileKeys:
 			fileLoc = courseDataDir + '/' + fileTime + '.' + courseDataExt
 			print fileLoc
-			subjDataRaw = fileUtils.unpickle(fileLoc)
+			# FIXME This is super hackish and you should fix it, Matt
+			try:
+				subjDataRaw = fileUtils.unpickle(fileLoc)
+			except IOError:
+				continue # with the next file if the one being opened doesn't exist
 			subjDataProc = getSubjSeatStats(subjList, subjDataRaw)
 			allData[fileTime] = subjDataProc
 			allData['_filesProcessed'].add(fileTime)
-			#print allData['_filesProcessed']
-			#print '    ****', subjDataProc['****']
-			#print '    CSCI', subjDataProc['CSCI']
 			numFilesProcessed += 1
 		with open(subjectSeatsFileLoc, 'w') as dataOut:
 			pickle.dump(allData, dataOut)
