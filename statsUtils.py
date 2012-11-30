@@ -206,7 +206,7 @@ def processScrapedToSubjectSeats(printProgress = False):
 		openClosedData = fileUtils.unpickle(openClosedRawFileLoc)
 		saneOpenClosedFileKeys = sanityCheck(openClosedData)
 		saneOpenClosedFileKeysSet = set(saneOpenClosedFileKeys)
-		saneFileKeys = saneOpenClosedFileKeysSet.intersect(set(fileUtils.getAllFiles()))
+		saneFileKeys = saneOpenClosedFileKeysSet.intersection(set(fileUtils.getAllFiles()))
 		existingFileKeys = allData['_filesProcessed']
 		unprocessedFileKeysSet = set(saneFileKeys).difference(existingFileKeys)
 		print len(unprocessedFileKeysSet), 'unprocessed files'
@@ -215,7 +215,6 @@ def processScrapedToSubjectSeats(printProgress = False):
 		for fileTime in unprocessedFileKeys:
 			fileLoc = courseDataDir + '/' + fileTime + '.' + courseDataExt
 			print fileLoc
-			# FIXME This is super hackish and you should fix it, Matt
 			try:
 				subjDataRaw = fileUtils.unpickle(fileLoc)
 			except IOError:
